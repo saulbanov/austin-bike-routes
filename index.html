@@ -76,6 +76,8 @@ aside { width: 380px; flex: none; display: flex; flex-direction: column; min-hei
 .hits li:hover, .hits li[aria-selected="true"] { background: var(--bg); }
 .hits b { font-weight: 600; }
 .hits span { font-size: 12px; color: var(--muted); }
+.hits li.none { cursor: default; color: var(--muted); font-size: 12px; }
+.hits li.none:hover { background: transparent; }
 .row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 8px 0 12px; }
 .group { display: flex; align-items: center; gap: 6px; }
 .group > span { font-size: 11px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted); }
@@ -232,7 +234,7 @@ a { color: var(--high); }
           <button class="btn" id="speak" type="button" role="switch" aria-checked="true" hidden title="While the follow-me dot is on, say each turn about 300 ft before it, and each high-crash intersection and exposed stretch about 500 ft before it">Speak turns and warnings: on</button>
           <button class="btn" id="notebtn" type="button" aria-pressed="false" hidden title="Then tap a street on the map to mark it Prefer or Avoid for every rider this page is shared with">Note a street</button>
         </div>
-        <p class="hint" id="hint">Tap the map to drop the start, then the end. Drag a pin to move it.</p>
+        <p class="hint" id="hint">Type a street address or a place and pick it from the list, or tap the map to drop the start, then the end. Drag a pin to move it.</p>
         <div id="result" hidden>
           <div class="card">
             <div class="stat"><b id="miles"></b><small id="vs"></small></div>
@@ -1076,7 +1078,7 @@ a { color: var(--high); }
   }
   function render() {
     const R = state.route, res = $("result"), hint = $("hint");
-    if (!R) { res.hidden = true; hint.hidden = false; hint.className = "hint"; hint.textContent = state.from ? "Now the end: tap the map or type a place." : "Tap the map to drop the start, then the end. Drag a pin to move it."; return; }
+    if (!R) { res.hidden = true; hint.hidden = false; hint.className = "hint"; hint.textContent = state.from ? "Now the end: type a place and pick it from the list, or tap the map." : "Type a street address or a place and pick it from the list, or tap the map to drop the start, then the end. Drag a pin to move it."; return; }
     if (R.err) { res.hidden = true; hint.hidden = false; hint.className = "hint err"; hint.textContent = R.err; return; }
     hint.hidden = true; res.hidden = false;
     const { sum } = R, E = G.e;
@@ -1305,27 +1307,33 @@ a { color: var(--high); }
     } catch (e) { return []; }
   }
   const pending = {};
+  // A typed name sets nothing by itself: a point comes from a picked suggestion, a map tap or the
+  // locate button. So when nothing matches, the list says so instead of staying hidden.
+  const NO_MATCH = 'No match. Try a street address (1801 E 51st St), two streets with "and", a swimming hole or hiking spot, or tap the map.';
+  const NO_MATCH_ARTIFACT = "No match in the city's files, the only search inside Claude. " + NO_MATCH.slice("No match. ".length);
   function wireSearch(which) {
     const input = $(which), list = $(which + "-hits");
-    let sel = -1, hits = [];
-    const show = () => { list.innerHTML = hits.map((h, i) => '<li data-i="' + i + '"' + (i === sel ? ' aria-selected="true"' : "") + "><b>" + esc(h.label) + "</b><span>" + esc(h.sub) + "</span></li>").join(""); list.hidden = !hits.length; };
+    let sel = -1, hits = [], none = "";
+    const show = () => { list.innerHTML = hits.map((h, i) => '<li data-i="' + i + '"' + (i === sel ? ' aria-selected="true"' : "") + "><b>" + esc(h.label) + "</b><span>" + esc(h.sub) + "</span></li>").join("") + (!hits.length && none ? '<li class="none">' + esc(none) + "</li>" : ""); list.hidden = !hits.length && !none; };
     const run = () => {
       const q = input.value.trim(); sel = -1;
-      if (!q || !G) { hits = []; show(); return; }
-      hits = geocodeLocal(q); show();
+      if (!q || !G) { hits = []; none = ""; show(); return; }
+      hits = geocodeLocal(q);
+      none = hits.length || q.length < 3 ? "" : ARTIFACT ? NO_MATCH_ARTIFACT : "Not in the city's files; asking OpenStreetMap…";
+      show();
       if (pending[which]) pending[which].abort();
       const ctl = pending[which] = new AbortController();
-      geocodeRemote(q, ctl.signal).then((more) => { if (ctl.signal.aborted || input.value.trim() !== q) return; const seen = new Set(hits.map((h) => h.label.toUpperCase())); for (const h of more) if (!seen.has(h.label.toUpperCase())) hits.push(h); show(); });
+      geocodeRemote(q, ctl.signal).then((more) => { if (ctl.signal.aborted || input.value.trim() !== q) return; const seen = new Set(hits.map((h) => h.label.toUpperCase())); for (const h of more) if (!seen.has(h.label.toUpperCase())) hits.push(h); if (!hits.length && none) none = ARTIFACT ? NO_MATCH_ARTIFACT : NO_MATCH; show(); });
     };
     let t; input.addEventListener("input", () => { clearTimeout(t); t = setTimeout(run, 140); });
-    input.addEventListener("focus", () => { if (hits.length && input.value.trim()) show(); });
+    input.addEventListener("focus", () => { if ((hits.length || none) && input.value.trim()) show(); });
     input.addEventListener("keydown", (ev) => {
       if (ev.key === "ArrowDown") { sel = Math.min(hits.length - 1, sel + 1); show(); ev.preventDefault(); }
       else if (ev.key === "ArrowUp") { sel = Math.max(0, sel - 1); show(); ev.preventDefault(); }
       else if (ev.key === "Enter") { ev.preventDefault(); const h = hits[Math.max(0, sel)]; if (h) pick(h); }
       else if (ev.key === "Escape") { list.hidden = true; }
     });
-    list.addEventListener("mousedown", (ev) => { const li = ev.target.closest("li"); if (li) { ev.preventDefault(); pick(hits[+li.dataset.i]); } });
+    list.addEventListener("mousedown", (ev) => { const li = ev.target.closest("li"); if (!li) return; ev.preventDefault(); if (li.dataset.i !== undefined) pick(hits[+li.dataset.i]); });
     input.addEventListener("blur", () => setTimeout(() => list.hidden = true, 120));
     const pick = (h) => { setPoint(which, h.la, h.lo, h.label); map.panTo([h.la, h.lo]); if (map.getZoom() < 13) map.setZoom(14); };
     $(which + "-x").addEventListener("click", () => { clearPoint(which); input.focus(); });
