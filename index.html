@@ -290,6 +290,7 @@ a { color: var(--high); }
   "use strict";
   const $ = (id) => document.getElementById(id);
   const ARTIFACT = !!(window.claude && typeof window.claude.use === "function");
+  const SITE_URL = "https://saulbanov.github.io/austin-bike-routes/";   // the hosted copy; the iPhone app's own address (capacitor://localhost) opens nowhere else
   const SCALE = 1e5, FT_PER_M = 3.280839895, M_PER_DEG = 111320;
   // hotspots: Comfort first plus the citywide avoid set (stage 3); trails: Comfort first with every foot off a trail or path
   // costing TRAILS.x times as much. New settings go last: a setting's place here is its number in the link.
@@ -1501,7 +1502,7 @@ a { color: var(--high); }
     $("gpx").addEventListener("click", saveGpx);
     if (canSendGpx()) { $("sendapp").hidden = false; $("sendapp").addEventListener("click", sendGpx); }
     $("share").addEventListener("click", () => {
-      const url = location.href;
+      const url = location.protocol === "capacitor:" ? SITE_URL + location.hash : location.href;
       const done = () => toast("Link copied");
       const fail = () => { toast("Copy failed; the address bar holds the link"); };
       if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(done, fail); else fail();
