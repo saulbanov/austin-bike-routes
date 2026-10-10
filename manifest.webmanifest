@@ -1,0 +1,13 @@
+{
+  "name": "Austin Bike Comfort Routes",
+  "short_name": "Bike Routes",
+  "description": "Bike routes on streets and trails rated comfortable by the City of Austin.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f1f3f4",
+  "theme_color": "#f1f3f4",
+  "icons": [
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}

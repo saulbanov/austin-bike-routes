@@ -1,0 +1,1578 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f1f3f4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0e0f10" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Bike Routes"><meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="icon-180.png">
+<title>Austin Bike Comfort Routes</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;600;800&family=Overpass+Mono:wght@400;600&display=swap">
+<style>
+/* Leaflet 1.9.4 stylesheet, inlined (BSD-2-Clause, (c) Volodymyr Agafonkin); its control images are not used here. */
+.leaflet-image-layer,.leaflet-layer,.leaflet-marker-icon,.leaflet-marker-shadow,.leaflet-pane,.leaflet-pane>canvas,.leaflet-pane>svg,.leaflet-tile,.leaflet-tile-container,.leaflet-zoom-box{position:absolute;left:0;top:0}.leaflet-container{overflow:hidden}.leaflet-marker-icon,.leaflet-marker-shadow,.leaflet-tile{-webkit-user-select:none;-moz-user-select:none;user-select:none;-webkit-user-drag:none}.leaflet-tile::selection{background:0 0}.leaflet-safari .leaflet-tile{image-rendering:-webkit-optimize-contrast}.leaflet-safari .leaflet-tile-container{width:1600px;height:1600px;-webkit-transform-origin:0 0}.leaflet-marker-icon,.leaflet-marker-shadow{display:block}.leaflet-container .leaflet-overlay-pane svg{max-width:none!important;max-height:none!important}.leaflet-container .leaflet-marker-pane img,.leaflet-container .leaflet-shadow-pane img,.leaflet-container .leaflet-tile,.leaflet-container .leaflet-tile-pane img,.leaflet-container img.leaflet-image-layer{max-width:none!important;max-height:none!important;width:auto;padding:0}.leaflet-container img.leaflet-tile{mix-blend-mode:plus-lighter}.leaflet-container.leaflet-touch-zoom{-ms-touch-action:pan-x pan-y;touch-action:pan-x pan-y}.leaflet-container.leaflet-touch-drag{-ms-touch-action:pinch-zoom;touch-action:none;touch-action:pinch-zoom}.leaflet-container.leaflet-touch-drag.leaflet-touch-zoom{-ms-touch-action:none;touch-action:none}.leaflet-container{-webkit-tap-highlight-color:transparent}.leaflet-container a{-webkit-tap-highlight-color:rgba(51,181,229,.4)}.leaflet-tile{filter:inherit;visibility:hidden}.leaflet-tile-loaded{visibility:inherit}.leaflet-zoom-box{width:0;height:0;-moz-box-sizing:border-box;box-sizing:border-box;z-index:800}.leaflet-overlay-pane svg{-moz-user-select:none}.leaflet-pane{z-index:400}.leaflet-tile-pane{z-index:200}.leaflet-overlay-pane{z-index:400}.leaflet-shadow-pane{z-index:500}.leaflet-marker-pane{z-index:600}.leaflet-tooltip-pane{z-index:650}.leaflet-popup-pane{z-index:700}.leaflet-map-pane canvas{z-index:100}.leaflet-map-pane svg{z-index:200}.leaflet-vml-shape{width:1px;height:1px}.lvml{behavior:url(#default#VML);display:inline-block;position:absolute}.leaflet-control{position:relative;z-index:800;pointer-events:visiblePainted;pointer-events:auto}.leaflet-bottom,.leaflet-top{position:absolute;z-index:1000;pointer-events:none}.leaflet-top{top:0}.leaflet-right{right:0}.leaflet-bottom{bottom:0}.leaflet-left{left:0}.leaflet-control{float:left;clear:both}.leaflet-right .leaflet-control{float:right}.leaflet-top .leaflet-control{margin-top:10px}.leaflet-bottom .leaflet-control{margin-bottom:10px}.leaflet-left .leaflet-control{margin-left:10px}.leaflet-right .leaflet-control{margin-right:10px}.leaflet-fade-anim .leaflet-popup{opacity:0;-webkit-transition:opacity .2s linear;-moz-transition:opacity .2s linear;transition:opacity .2s linear}.leaflet-fade-anim .leaflet-map-pane .leaflet-popup{opacity:1}.leaflet-zoom-animated{-webkit-transform-origin:0 0;-ms-transform-origin:0 0;transform-origin:0 0}svg.leaflet-zoom-animated{will-change:transform}.leaflet-zoom-anim .leaflet-zoom-animated{-webkit-transition:-webkit-transform .25s cubic-bezier(0,0,.25,1);-moz-transition:-moz-transform .25s cubic-bezier(0,0,.25,1);transition:transform .25s cubic-bezier(0,0,.25,1)}.leaflet-pan-anim .leaflet-tile,.leaflet-zoom-anim .leaflet-tile{-webkit-transition:none;-moz-transition:none;transition:none}.leaflet-zoom-anim .leaflet-zoom-hide{visibility:hidden}.leaflet-interactive{cursor:pointer}.leaflet-grab{cursor:-webkit-grab;cursor:-moz-grab;cursor:grab}.leaflet-crosshair,.leaflet-crosshair .leaflet-interactive{cursor:crosshair}.leaflet-control,.leaflet-popup-pane{cursor:auto}.leaflet-dragging .leaflet-grab,.leaflet-dragging .leaflet-grab .leaflet-interactive,.leaflet-dragging .leaflet-marker-draggable{cursor:move;cursor:-webkit-grabbing;cursor:-moz-grabbing;cursor:grabbing}.leaflet-image-layer,.leaflet-marker-icon,.leaflet-marker-shadow,.leaflet-pane>svg path,.leaflet-tile-container{pointer-events:none}.leaflet-image-layer.leaflet-interactive,.leaflet-marker-icon.leaflet-interactive,.leaflet-pane>svg path.leaflet-interactive,svg.leaflet-image-layer.leaflet-interactive path{pointer-events:visiblePainted;pointer-events:auto}.leaflet-container{background:#ddd;outline-offset:1px}.leaflet-container a{color:#0078a8}.leaflet-zoom-box{border:2px dotted #38f;background:rgba(255,255,255,.5)}.leaflet-container{font-family:"Helvetica Neue",Arial,Helvetica,sans-serif;font-size:12px;font-size:.75rem;line-height:1.5}.leaflet-bar{box-shadow:0 1px 5px rgba(0,0,0,.65);border-radius:4px}.leaflet-bar a{background-color:#fff;border-bottom:1px solid #ccc;width:26px;height:26px;line-height:26px;display:block;text-align:center;text-decoration:none;color:#000}.leaflet-bar a,.leaflet-control-layers-toggle{background-position:50% 50%;background-repeat:no-repeat;display:block}.leaflet-bar a:focus,.leaflet-bar a:hover{background-color:#f4f4f4}.leaflet-bar a:first-child{border-top-left-radius:4px;border-top-right-radius:4px}.leaflet-bar a:last-child{border-bottom-left-radius:4px;border-bottom-right-radius:4px;border-bottom:none}.leaflet-bar a.leaflet-disabled{cursor:default;background-color:#f4f4f4;color:#bbb}.leaflet-touch .leaflet-bar a{width:30px;height:30px;line-height:30px}.leaflet-touch .leaflet-bar a:first-child{border-top-left-radius:2px;border-top-right-radius:2px}.leaflet-touch .leaflet-bar a:last-child{border-bottom-left-radius:2px;border-bottom-right-radius:2px}.leaflet-control-zoom-in,.leaflet-control-zoom-out{font:bold 18px 'Lucida Console',Monaco,monospace;text-indent:1px}.leaflet-touch .leaflet-control-zoom-in,.leaflet-touch .leaflet-control-zoom-out{font-size:22px}.leaflet-control-layers{box-shadow:0 1px 5px rgba(0,0,0,.4);background:#fff;border-radius:5px}.leaflet-control-layers-toggle{width:36px;height:36px}.leaflet-retina .leaflet-control-layers-toggle{background-size:26px 26px}.leaflet-touch .leaflet-control-layers-toggle{width:44px;height:44px}.leaflet-control-layers .leaflet-control-layers-list,.leaflet-control-layers-expanded .leaflet-control-layers-toggle{display:none}.leaflet-control-layers-expanded .leaflet-control-layers-list{display:block;position:relative}.leaflet-control-layers-expanded{padding:6px 10px 6px 6px;color:#333;background:#fff}.leaflet-control-layers-scrollbar{overflow-y:scroll;overflow-x:hidden;padding-right:5px}.leaflet-control-layers-selector{margin-top:2px;position:relative;top:1px}.leaflet-control-layers label{display:block;font-size:13px;font-size:1.08333em}.leaflet-control-layers-separator{height:0;border-top:1px solid #ddd;margin:5px -10px 5px -6px}.leaflet-default-icon-path{}.leaflet-container .leaflet-control-attribution{background:#fff;background:rgba(255,255,255,.8);margin:0}.leaflet-control-attribution,.leaflet-control-scale-line{padding:0 5px;color:#333;line-height:1.4}.leaflet-control-attribution a{text-decoration:none}.leaflet-control-attribution a:focus,.leaflet-control-attribution a:hover{text-decoration:underline}.leaflet-attribution-flag{display:inline!important;vertical-align:baseline!important;width:1em;height:.6669em}.leaflet-left .leaflet-control-scale{margin-left:5px}.leaflet-bottom .leaflet-control-scale{margin-bottom:5px}.leaflet-control-scale-line{border:2px solid #777;border-top:none;line-height:1.1;padding:2px 5px 1px;white-space:nowrap;-moz-box-sizing:border-box;box-sizing:border-box;background:rgba(255,255,255,.8);text-shadow:1px 1px #fff}.leaflet-control-scale-line:not(:first-child){border-top:2px solid #777;border-bottom:none;margin-top:-2px}.leaflet-control-scale-line:not(:first-child):not(:last-child){border-bottom:2px solid #777}.leaflet-touch .leaflet-bar,.leaflet-touch .leaflet-control-attribution,.leaflet-touch .leaflet-control-layers{box-shadow:none}.leaflet-touch .leaflet-bar,.leaflet-touch .leaflet-control-layers{border:2px solid rgba(0,0,0,.2);background-clip:padding-box}.leaflet-popup{position:absolute;text-align:center;margin-bottom:20px}.leaflet-popup-content-wrapper{padding:1px;text-align:left;border-radius:12px}.leaflet-popup-content{margin:13px 24px 13px 20px;line-height:1.3;font-size:13px;font-size:1.08333em;min-height:1px}.leaflet-popup-content p{margin:17px 0;margin:1.3em 0}.leaflet-popup-tip-container{width:40px;height:20px;position:absolute;left:50%;margin-top:-1px;margin-left:-20px;overflow:hidden;pointer-events:none}.leaflet-popup-tip{width:17px;height:17px;padding:1px;margin:-10px auto 0;pointer-events:auto;-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-ms-transform:rotate(45deg);transform:rotate(45deg)}.leaflet-popup-content-wrapper,.leaflet-popup-tip{background:#fff;color:#333;box-shadow:0 3px 14px rgba(0,0,0,.4)}.leaflet-container a.leaflet-popup-close-button{position:absolute;top:0;right:0;border:none;text-align:center;width:24px;height:24px;font:16px/24px Tahoma,Verdana,sans-serif;color:#757575;text-decoration:none;background:0 0}.leaflet-container a.leaflet-popup-close-button:focus,.leaflet-container a.leaflet-popup-close-button:hover{color:#585858}.leaflet-popup-scrolled{overflow:auto}.leaflet-oldie .leaflet-popup-content-wrapper{-ms-zoom:1}.leaflet-oldie .leaflet-popup-tip{width:24px;margin:0 auto}.leaflet-oldie .leaflet-control-layers,.leaflet-oldie .leaflet-control-zoom,.leaflet-oldie .leaflet-popup-content-wrapper,.leaflet-oldie .leaflet-popup-tip{border:1px solid #999}.leaflet-div-icon{background:#fff;border:1px solid #666}.leaflet-tooltip{position:absolute;padding:6px;background-color:#fff;border:1px solid #fff;border-radius:3px;color:#222;white-space:nowrap;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;pointer-events:none;box-shadow:0 1px 3px rgba(0,0,0,.4)}.leaflet-tooltip.leaflet-interactive{cursor:pointer;pointer-events:auto}.leaflet-tooltip-bottom:before,.leaflet-tooltip-left:before,.leaflet-tooltip-right:before,.leaflet-tooltip-top:before{position:absolute;pointer-events:none;border:6px solid transparent;background:0 0;content:""}.leaflet-tooltip-bottom{margin-top:6px}.leaflet-tooltip-top{margin-top:-6px}.leaflet-tooltip-bottom:before,.leaflet-tooltip-top:before{left:50%;margin-left:-6px}.leaflet-tooltip-top:before{bottom:0;margin-bottom:-12px;border-top-color:#fff}.leaflet-tooltip-bottom:before{top:0;margin-top:-12px;margin-left:-6px;border-bottom-color:#fff}.leaflet-tooltip-left{margin-left:-6px}.leaflet-tooltip-right{margin-left:6px}.leaflet-tooltip-left:before,.leaflet-tooltip-right:before{top:50%;margin-top:-6px}.leaflet-tooltip-left:before{right:0;margin-right:-12px;border-left-color:#fff}.leaflet-tooltip-right:before{left:0;margin-left:-12px;border-right-color:#fff}@media print{.leaflet-control{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+/* Layout: a working tool, the sibling of map/index.html. The map takes the width; a panel beside it (below it
+   on a phone) holds the two search boxes, the route card and the cue sheet. Same tokens and the same Overpass
+   face as the comfort map, plus one faint token for the streets the city has not rated. */
+:root {
+  --bg: #f1f3f4; --surface: #fcfcfb; --ink: #0f1114; --ink2: #4a4f57; --muted: #80858d; --line: #dcdfe3;
+  --high: #2a78d6; --medium: #8f8d86; --sidewalk: #e0a03c; --low: #e34948; --xlow: #8e1b22; --sw: #7a5cc2; --trail: #2f9a5a;
+  --street: #cfd3d8; --water: #e9edf0; --route-case: #0f1114; --focus: #2a78d6;
+  --display: "Overpass", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "Overpass Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0e0f10; --surface: #1a1a19; --ink: #ffffff; --ink2: #c4c6c9; --muted: #8b8e94; --line: #2f3033;
+  --high: #3987e5; --medium: #77766f; --sidewalk: #c9a04a; --low: #e05a5a; --xlow: #ffc7c0; --sw: #a98ee8; --trail: #4fb573;
+  --street: #333538; --water: #141516; --route-case: #ffffff; --focus: #3987e5; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #0e0f10; --surface: #1a1a19; --ink: #ffffff; --ink2: #c4c6c9; --muted: #8b8e94; --line: #2f3033;
+  --high: #3987e5; --medium: #77766f; --sidewalk: #c9a04a; --low: #e05a5a; --xlow: #ffc7c0; --sw: #a98ee8; --trail: #4fb573;
+  --street: #333538; --water: #141516; --route-case: #ffffff; --focus: #3987e5; color-scheme: dark }
+
+[hidden] { display: none !important; }
+html, body { height: 100%; }
+body { background: var(--bg); color: var(--ink); font-family: var(--display); font-size: 14px; line-height: 1.45; }
+.app { height: 100%; display: flex; flex-direction: column; gap: 10px; padding-inline: 16px; padding-block: 12px; box-sizing: border-box; }
+header { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 16px; }
+h1 { font-size: 20px; font-weight: 800; margin: 0; letter-spacing: -0.01em; }
+header p { margin: 0; color: var(--ink2); max-width: 75ch; }
+main { flex: 1; min-height: 0; display: flex; gap: 12px; }
+.mapwrap { position: relative; flex: 1; min-width: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+#map { position: absolute; inset: 0; background: var(--surface); font-family: var(--display); }
+#map.pick { cursor: crosshair; }
+.leaflet-container { background: var(--surface); }
+#map.dark-tiles .leaflet-tile-pane { filter: invert(1) hue-rotate(180deg) brightness(.8) contrast(.9) saturate(.6); }
+.leaflet-bar { border: 1px solid var(--line) !important; box-shadow: none !important; border-radius: 6px !important; overflow: hidden; }
+.leaflet-bar a { background: var(--surface) !important; color: var(--ink) !important; border-bottom-color: var(--line) !important; font-family: var(--mono); }
+.leaflet-bar a.leaflet-disabled { color: var(--muted) !important; }
+.leaflet-bar a.follow.on { background: var(--ink) !important; color: var(--surface) !important; }
+.leaflet-control-attribution { background: var(--surface) !important; color: var(--muted) !important; font: 10px var(--display); }
+.leaflet-control-attribution a { color: var(--ink2) !important; }
+.leaflet-tooltip { background: var(--surface); color: var(--ink); border: 1px solid var(--line); border-radius: 5px; font: 12px var(--display); box-shadow: none; }
+.leaflet-tooltip-top:before { border-top-color: var(--line); }
+.pin { width: 26px; height: 26px; margin: -13px 0 0 -13px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); background: var(--ink); border: 2px solid var(--surface); box-shadow: 0 2px 6px rgba(0,0,0,.3); display: grid; place-items: center; }
+.pin b { transform: rotate(45deg); color: var(--surface); font: 800 12px var(--display); }
+.legend { position: absolute; left: 10px; bottom: 22px; z-index: 500; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 8px 10px; display: grid; gap: 3px; font-size: 12px; color: var(--ink2); max-width: calc(100% - 20px); box-sizing: border-box; }
+.legend div { display: flex; align-items: center; gap: 8px; }
+.legend summary { cursor: pointer; font-weight: 600; color: var(--ink); }
+.sw { width: 22px; height: 0; border-top: 3px solid var(--c); flex: none; }
+.sw.dash { border-top-style: dashed; }
+.sw.thin { border-top-width: 2px; }
+#loading { position: absolute; inset: 0; display: grid; place-items: center; color: var(--ink2); z-index: 600; background: var(--surface); }
+aside { width: 380px; flex: none; display: flex; flex-direction: column; min-height: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; }
+.tabs { display: flex; border-bottom: 1px solid var(--line); }
+.tabs button { flex: 1; font: inherit; font-weight: 600; padding: 9px 8px; border: 0; background: transparent; color: var(--muted); cursor: pointer; border-bottom: 2px solid transparent; }
+.tabs button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--ink); }
+.pane { overflow-y: auto; padding: 12px; min-height: 0; flex: 1; }
+.pane p { margin: 0 0 10px; color: var(--ink2); }
+.field { position: relative; margin-bottom: 8px; }
+.field label { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted); margin-bottom: 3px; }
+.field input { width: 100%; box-sizing: border-box; font: inherit; padding: 8px 34px 8px 10px; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); color: var(--ink); }
+.field input:focus { outline: 2px solid var(--focus); outline-offset: 1px; }
+.field .x { position: absolute; right: 6px; bottom: 5px; width: 26px; height: 26px; border: 0; background: transparent; color: var(--muted); font: 600 16px var(--mono); cursor: pointer; border-radius: 4px; }
+.field .x:hover { color: var(--ink); background: var(--line); }
+.hits { position: absolute; left: 0; right: 0; top: 100%; z-index: 700; margin: 2px 0 0; padding: 4px 0; list-style: none; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; box-shadow: 0 6px 18px rgba(0,0,0,.18); max-height: 240px; overflow-y: auto; }
+.hits li { padding: 6px 10px; cursor: pointer; display: grid; gap: 1px; }
+.hits li:hover, .hits li[aria-selected="true"] { background: var(--bg); }
+.hits b { font-weight: 600; }
+.hits span { font-size: 12px; color: var(--muted); }
+.row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 8px 0 12px; }
+.group { display: flex; align-items: center; gap: 6px; }
+.group > span { font-size: 11px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted); }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; background: var(--surface); }
+.seg button { font: inherit; font-size: 13px; padding: 5px 10px; border: 0; background: transparent; color: var(--ink2); cursor: pointer; }
+.seg button + button { border-left: 1px solid var(--line); }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--surface); font-weight: 600; }
+.btn { font: inherit; font-size: 13px; padding: 6px 11px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); color: var(--ink); cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+.btn.primary { background: var(--ink); color: var(--surface); border-color: var(--ink); font-weight: 600; }
+.btn:disabled { color: var(--muted); cursor: default; }
+button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.card { border: 1px solid var(--line); border-radius: 8px; padding: 12px; margin-bottom: 12px; }
+.stat { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.stat b { font: 800 28px/1 var(--display); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.stat small { color: var(--ink2); font-size: 13px; }
+.bar { display: flex; height: 10px; border-radius: 5px; overflow: hidden; margin: 10px 0 6px; background: var(--line); }
+.bar i { display: block; height: 100%; background: var(--c); }
+.bar i.dashed { background: repeating-linear-gradient(90deg, var(--c) 0 4px, color-mix(in srgb, var(--c) 35%, transparent) 4px 7px); }
+.cues .turn { font-weight: 400; color: var(--ink2); }
+.watch.trails-card { border-left-color: var(--trail); }
+.shares { display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 12px; color: var(--ink2); margin-bottom: 8px; }
+.shares span::before { content: ""; display: inline-block; width: 9px; height: 9px; border-radius: 2px; background: var(--c); margin-right: 5px; vertical-align: -1px; }
+.warn { border-left: 3px solid var(--low); padding: 4px 10px; margin: 8px 0; font-size: 13px; color: var(--ink2); }
+.warn.ok { border-left-color: var(--high); }
+.warn.walk { border-left-color: var(--sw); }
+.warn b { color: var(--ink); }
+.actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 4px; }
+.note { font-size: 12px; color: var(--muted); margin: 4px 0 0; }
+.cues { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+.cues li { display: grid; grid-template-columns: 1fr auto; gap: 1px 10px; align-items: baseline; padding: 6px 2px; border-bottom: 1px solid var(--line); cursor: pointer; }
+.cues li:hover { background: var(--bg); }
+.cues .nm { font-weight: 600; min-width: 0; overflow-wrap: anywhere; }
+.cues .mi { font: 600 13px var(--mono); font-variant-numeric: tabular-nums; }
+.cues .sub { grid-column: 1 / 3; font-size: 12px; color: var(--ink2); }
+.chip { display: inline-block; width: 9px; height: 9px; border-radius: 2px; background: var(--c); margin-right: 5px; vertical-align: -1px; }
+.hint { color: var(--ink2); }
+.err { color: var(--low); font-weight: 600; }
+details { margin-top: 12px; color: var(--ink2); font-size: 12px; }
+details code { font-family: var(--mono); font-size: 11px; overflow-wrap: anywhere; }
+ul.notes { margin: 0 0 10px; padding-left: 18px; color: var(--ink2); }
+ul.notes li { margin-bottom: 5px; }
+a { color: var(--high); }
+/* high-crash junctions and exposed stretches (route-risk handoff, stage 1) */
+.ring { box-sizing: border-box; width: 28px; height: 28px; margin: -14px 0 0 -14px; border-radius: 50%; border: 3px solid var(--low); background: var(--surface); color: var(--ink); display: grid; place-items: center; font: 800 12px/1 var(--display); font-variant-numeric: tabular-nums; box-shadow: 0 0 0 2px var(--surface); }
+.ring.small { width: 16px; height: 16px; margin: -8px 0 0 -8px; border-width: 2px; font-size: 0; box-shadow: none; }
+.sw.ring-key { width: 12px; height: 12px; border: 2px solid var(--low); border-radius: 50%; background: var(--surface); }
+.sw.hatch { height: 9px; border: 0; background: repeating-linear-gradient(90deg, var(--low) 0 3px, transparent 3px 7px); }
+.watch { border-left: 3px solid var(--low); padding: 4px 10px; margin: 8px 0; font-size: 13px; color: var(--ink2); }
+.watch h3 { margin: 0 0 4px; font-size: 13px; font-weight: 800; color: var(--ink); }
+.watch ol { margin: 0 0 6px; padding-left: 18px; }
+.watch li { margin-bottom: 3px; cursor: pointer; }
+.watch .tot { margin: 4px 0 0; }
+.cues .sub2 { grid-column: 1 / 3; font-size: 12px; color: var(--muted); }
+.cues .sub2.x { color: var(--low); }
+.leaflet-popup-content-wrapper, .leaflet-popup-tip { background: var(--surface); color: var(--ink); box-shadow: 0 3px 14px rgba(0,0,0,.3); }
+.leaflet-popup-content { margin: 10px 14px; font: 13px/1.4 var(--display); max-width: 260px; }
+.leaflet-popup-content b { font-weight: 800; }
+.leaflet-popup-content p { margin: 4px 0; color: var(--ink2); }
+.leaflet-popup-content .fine { font-size: 11px; color: var(--muted); }
+/* stage 2: warning rows in the cue sheet, the banner while following, the speak switch */
+.cues li.ahead { grid-template-columns: 1fr; cursor: pointer; border-left: 3px solid var(--low); padding-left: 8px; background: color-mix(in srgb, var(--low) 8%, transparent); }
+.cues li.ahead .nm { font-weight: 600; color: var(--ink); }
+.topstack { position: absolute; top: 8px; left: 54px; right: 8px; z-index: 850; display: flex; flex-direction: column; gap: 6px; pointer-events: none; }
+.banner { background: var(--surface); color: var(--ink); border: 1px solid var(--line); border-left: 6px solid var(--low); border-radius: 6px; padding: 8px 12px; font-size: 14px; font-weight: 600; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
+.banner small { display: block; font-weight: 400; color: var(--ink2); font-size: 12px; }
+/* the next turn while following (2026-10-09): a strip under the warning banner; grey edge when off the route */
+.nextturn { background: var(--surface); color: var(--ink); border: 1px solid var(--line); border-left: 6px solid var(--high); border-radius: 6px; padding: 8px 12px; font-size: 15px; font-weight: 700; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
+.nextturn small { display: block; font-weight: 400; color: var(--ink2); font-size: 12px; }
+.nextturn.off { border-left-color: var(--muted); }
+.seg.switch button { min-width: 0; }
+/* stage 3: avoided spots crossed out, the detour line on the card */
+.ring.avoided { position: relative; border-color: var(--muted); color: var(--muted); }
+.ring.avoided::after { content: ""; position: absolute; left: -5px; right: -5px; top: 50%; margin-top: -1.5px; border-top: 3px solid var(--low); transform: rotate(-45deg); }
+.ring.avoided.small::after { left: -3px; right: -3px; border-top-width: 2px; margin-top: -1px; }
+.watch.avoid { border-left-color: var(--muted); }
+.watch.avoid ul { margin: 4px 0 0; padding: 0; list-style: none; }
+.watch.avoid li { display: flex; flex-wrap: wrap; gap: 2px 10px; align-items: baseline; margin-bottom: 3px; }
+.watch.avoid s { color: var(--ink); text-decoration-color: var(--low); text-decoration-thickness: 2px; }
+.linkbtn { font: inherit; font-size: 12px; border: 0; background: none; color: var(--high); cursor: pointer; padding: 0; text-decoration: underline; }
+.leaflet-popup-content .btn { margin-top: 6px; }
+.toast { position: absolute; left: 50%; bottom: 14px; transform: translateX(-50%); background: var(--ink); color: var(--surface); padding: 6px 12px; border-radius: 6px; font-size: 13px; z-index: 800; pointer-events: none; }
+/* riders' notes: Prefer / Avoid on a street, shared by everyone the page is shared with */
+.cues .riders { grid-column: 1 / 3; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; font-size: 12px; color: var(--ink2); }
+.rbtn { font: inherit; font-size: 12px; padding: 1px 8px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); color: var(--ink2); cursor: pointer; }
+.rbtn[data-r="1"][aria-pressed="true"] { background: var(--high); border-color: var(--high); color: var(--surface); }
+.rbtn[data-r="-1"][aria-pressed="true"] { background: var(--low); border-color: var(--low); color: var(--surface); }
+.leaflet-popup-content .rbtn { margin: 6px 6px 0 0; }
+.btn[aria-pressed="true"] { background: var(--ink); color: var(--surface); border-color: var(--ink); }
+.watch.riders-card { border-left-color: var(--high); }
+@media (max-width: 860px) {
+  html, body { height: auto; }
+  .app { height: auto; }
+  main { flex-direction: column; }
+  .mapwrap { height: 56svh; min-height: 360px; flex: none; }
+  aside { width: auto; }
+  .pane { max-height: none; overflow: visible; }
+  .row .group { flex-wrap: wrap; min-width: 0; }
+  .row .seg { flex-wrap: wrap; }
+}
+@media (prefers-reduced-motion: no-preference) { .hits li, .btn { transition: background .12s; } }
+</style>
+
+<div class="app">
+  <header>
+    <h1>Austin Bike Comfort Routes</h1>
+    <p>Pick a start and an end. The route keeps to streets and trails the City of Austin rates comfortable for bicycling, crossing neighborhoods on quiet unrated streets and using a Low-rated street only when nothing else connects.</p>
+  </header>
+
+  <main>
+    <div class="mapwrap">
+      <div id="map" aria-label="Map of Austin streets colored by the city's bike comfort rating, with the planned route"></div>
+      <div id="loading">Loading the street network</div>
+      <details class="legend" id="legend" open>
+        <summary>Key</summary>
+        <div><i class="sw" style="--c:var(--high)"></i>Rated High</div>
+        <div><i class="sw dash" style="--c:var(--high)"></i>High, trail</div>
+        <div><i class="sw" style="--c:var(--medium)"></i>Medium</div>
+        <div><i class="sw" style="--c:var(--sidewalk)"></i>Helpful sidewalk, minor or rough trail</div>
+        <div><i class="sw" style="--c:var(--low)"></i>Low</div>
+        <div><i class="sw" style="--c:var(--xlow)"></i>Extremely low</div>
+        <div><i class="sw thin" style="--c:var(--muted)"></i>Not rated by the city</div>
+        <div id="key-sw" hidden><i class="sw dash thin" style="--c:var(--sw)"></i>Sidewalk along a big road</div>
+        <div id="key-osm" hidden><i class="sw dash" style="--c:var(--trail)"></i>Path from OpenStreetMap, not rated</div>
+        <div id="key-ring" hidden><i class="sw ring-key"></i>High-crash intersection</div>
+        <div id="key-hatch" hidden><i class="sw hatch"></i>Exposed stretch on the route</div>
+      </details>
+      <div class="topstack"><div id="banner" class="banner" role="alert" hidden></div><div id="nextturn" class="nextturn" role="status" hidden></div></div>
+      <div id="toast" class="toast" hidden></div>
+    </div>
+
+    <aside>
+      <div class="tabs" role="tablist">
+        <button id="tab-plan" role="tab" aria-selected="true">Plan</button>
+        <button id="tab-notes" role="tab" aria-selected="false">Read first</button>
+      </div>
+      <div class="pane" id="pane-plan">
+        <div class="field">
+          <label for="from">Start</label>
+          <input id="from" autocomplete="off" placeholder="Address, street, swimming hole, or tap the map">
+          <button class="x" id="from-x" aria-label="Clear start" hidden>&times;</button>
+          <ul class="hits" id="from-hits" hidden></ul>
+        </div>
+        <div class="field">
+          <label for="to">End</label>
+          <input id="to" autocomplete="off" placeholder="Where to">
+          <button class="x" id="to-x" aria-label="Clear end" hidden>&times;</button>
+          <ul class="hits" id="to-hits" hidden></ul>
+        </div>
+        <div class="row">
+          <div class="group"><span>Route</span><div class="seg" id="mode">
+            <button data-v="comfort" aria-pressed="true">Comfort first</button><button data-v="balanced" aria-pressed="false">Balanced</button><button data-v="shortest" aria-pressed="false">Shortest</button><button data-v="trails" aria-pressed="false" id="mode-trails" hidden title="Comfort first, and every foot not on a trail or path costs more">Trails first</button><button data-v="hotspots" aria-pressed="false" id="mode-hot" hidden title="Comfort first, and every high-crash intersection and exposed stretch citywide costs 50 times as much to ride">Avoid hotspots</button></div></div>
+          <button class="btn" id="swap" type="button">Swap</button>
+          <button class="btn" id="locate" type="button" hidden>Start from my location</button>
+          <button class="btn" id="speak" type="button" role="switch" aria-checked="true" hidden title="While the follow-me dot is on, say each turn about 300 ft before it, and each high-crash intersection and exposed stretch about 500 ft before it">Speak turns and warnings: on</button>
+          <button class="btn" id="notebtn" type="button" aria-pressed="false" hidden title="Then tap a street on the map to mark it Prefer or Avoid for every rider this page is shared with">Note a street</button>
+        </div>
+        <p class="hint" id="hint">Tap the map to drop the start, then the end. Drag a pin to move it.</p>
+        <div id="result" hidden>
+          <div class="card">
+            <div class="stat"><b id="miles"></b><small id="vs"></small></div>
+            <div class="bar" id="bar"></div>
+            <div class="shares" id="shares"></div>
+            <div id="warn"></div>
+            <div id="watch"></div>
+            <div id="avoid"></div>
+            <div id="trails"></div>
+            <div id="riders"></div>
+            <div class="actions">
+              <a class="btn primary" id="gmaps" href="#" target="_blank" rel="noopener">Open in Google Maps</a>
+              <button class="btn" id="gpx" type="button">Save GPX</button>
+              <button class="btn" id="sendapp" type="button" hidden title="Opens the share sheet with the .gpx attached, for Komoot or Ride with GPS">Send to app</button>
+              <button class="btn" id="share" type="button">Copy link</button>
+            </div>
+            <p class="note" id="gnote"></p>
+          </div>
+          <ol class="cues" id="cues"></ol>
+        </div>
+      </div>
+      <div class="pane" id="pane-notes" hidden>
+        <ul class="notes">
+          <li>The rating is a city planner's judgment of how comfortable a street is to ride, not a measured risk. On the city's own figures, streets rated High recorded more police-reported crashes per mile than Low ones, probably because more people ride them; nothing here counts riders.</li>
+          <li id="note-hot" hidden></li>
+          <li id="note-hin" hidden>The High-Injury Network is the city's Vision Zero list of the streets where the most people have been killed or seriously hurt in traffic, by any mode (<a href="https://www.austintexas.gov/transportation-public-works/programs/vision-zero" target="_blank" rel="noopener">austintexas.gov/visionzero</a>). "Exposed" on this page means the rule above, nothing more: a count and the street's layout, not a measure of how likely a crash is. The red rings and the hatched casing mark them; tap one for the numbers. Under each street in the cue sheet: the bike facility, the posted speed, the High-Injury Network flag and the crashes within 60 ft of the line since 2021.</li>
+          <li id="note-avoid" hidden>Tap a red ring or a hatched stretch and choose "Route around this": the route is planned again with that intersection (every street piece that meets it) or that stretch costing 50 times as much to ride as before. Nothing is removed, so if no other way connects, the route still goes through it and the card says so. The avoided spot is drawn crossed out, the card says how many miles the way around adds, and the choice is kept in the link and on this device. "Avoid hotspots" does the same for every high-crash intersection and exposed stretch in the city at once, on top of Comfort first, and says how many of the spots the comfort route passes it gets around and what that adds. It is not the default: crash counts follow how many people ride a street, and the default stays the city's ratings.</li>
+          <li id="note-ahead" hidden>Every high-crash intersection and exposed stretch on the route also gets its own row in the cue sheet, marked in red, just ahead of the street it is on ("Ahead: …"). With the follow-me dot on, the page measures how far along the route you are and, about 500 ft before each of them, shows a banner across the top of the map and says it aloud; each one is said once per ride (turning the dot off and on starts a new ride). The "Speak warnings" switch turns the voice off; the banner stays. Speech needs a tap first on an iPhone, and the follow button is that tap. More than 250 ft from the line, the page treats you as off the route and stays quiet. The phone must stay awake with the page open; it does not speak from a locked screen.</li>
+          <li id="note-sw" hidden></li>
+          <li id="note-trails" hidden></li>
+          <li id="note-osm" hidden></li>
+          <li id="note-turns">Each street in the directions starts with the turn onto it, from the angle between the two lines: under 25 degrees is "Continue onto", under 65 "Bear left" or "Bear right onto", 155 and over "Sharp left" or "Sharp right onto"; the first line says which way to head. The angles come from the drawn lines, so a curved corner can read as a bear where the ground says turn. The GPX carries the same turns as a route (rte) for apps that read them, with the exact line as a track.</li>
+          <li id="note-nav">Riding with the page (on a hosted copy over HTTPS, with the follow-me dot on): a strip at the top of the map names the next turn and the distance to it, and each turn is said aloud once about 300 ft before it ("In 300 feet, turn left onto Speedway"); the end is announced the same way. If you are more than 250 ft from the line on three fixes in a row, the route is planned again from where you are to the same end, with the same setting and avoided spots, and the page says so; it does this at most once every 30 seconds and not while the phone's fix is poorer than 60 m. The "Speak" switch covers turns and warnings alike. The phone must stay awake with the page open; it does not speak from a locked screen. Closures and construction are not in the data: the page cannot know a path is blocked until you leave the line.</li>
+          <li id="note-riders" hidden>Riders' notes. Anyone this page is shared with as a Contributor or above can mark a street Prefer or Avoid, from the buttons under each street in the directions or with "Note a street" and a tap on the map. A note covers that street within roughly half a mile of where it was marked. When at least 3 more riders prefer a street than avoid it, the planner treats it as a little more comfortable than the city's rating (half the rating's penalty); when at least 3 more avoid it, as a little less (the penalty goes up by 1.5, which puts a Medium street between an unrated collector and a Low street). The city's rating stays the base, "Shortest" ignores the notes, and each rider counts once per street. Everyone the page is shared with sees the counts, not who wrote them.</li>
+          <li>Streets the city has not rated are drawn faint. The planner crosses them when they are local streets and avoids them when they are arterials or highways, but it knows nothing about their lanes, parking or traffic.</li>
+          <li>"Comfort first" will ride a long way round to stay off a Low street; "Balanced" halves that pull; "Shortest" ignores the ratings and shows what the detour costs.</li>
+          <li>One-way streets are respected except where a two-way protected lane or a trail runs. Hills, lights, construction and closures are not in the data.</li>
+          <li>"Start from my location" and the follow button (the ring under the zoom buttons) use the phone's GPS. They work when this page is opened as a normal web page over HTTPS; inside the Claude artifact viewer they are hidden, because the viewer does not allow location.</li>
+          <li>"Open in Google Maps" hands Google the start, the end and up to nine points along this line. Google draws its own bike route between those points, so check it against the line here. On a phone, Google may use only the first three points.</li>
+          <li>Addresses come from the house-number ranges in the city's street file, placed along the block. A number the file does not hold lands on the nearest block of that street.</li>
+          <li>Where a trail meets a street with no junction in the city's file, the two were joined if the trail ends within 20 m of the street's centerline (6 m for a street end). A few joins may not exist on the ground.</li>
+        </ul>
+        <p>The city's own map is at <a href="https://www.austintexas.gov/bikemap" target="_blank" rel="noopener">austintexas.gov/bikemap</a>. The ratings, crashes and gaps are on the companion comfort map.</p>
+        <details><summary>Network and source files</summary><div id="sources"></div></details>
+      </div>
+    </aside>
+  </main>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+(function () {
+  "use strict";
+  const $ = (id) => document.getElementById(id);
+  const ARTIFACT = !!(window.claude && typeof window.claude.use === "function");
+  const SCALE = 1e5, FT_PER_M = 3.280839895, M_PER_DEG = 111320;
+  // hotspots: Comfort first plus the citywide avoid set (stage 3); trails: Comfort first with every foot off a trail or path
+  // costing TRAILS.x times as much. New settings go last: a setting's place here is its number in the link.
+  const WEIGHT = { comfort: 2, balanced: 1, shortest: 0, hotspots: 2, trails: 2 };
+  const AVOID_X = 50;   // an avoided junction's street pieces, or an avoided stretch's, cost this many times as much (never removed)
+  // rating code -> draw class: 0 high street, 1 high trail, 2 medium, 3 sidewalk tier, 4 low, 5 extremely low, 6 unrated faint, 7 unrated bigger road,
+  // 8 sidewalk along a big road (SW, route-risk stage 4; drawn from zoom 14), 9 path from OpenStreetMap (OP, OR; from zoom 13)
+  const CLASS = { H: 0, HP: 1, HU: 1, M: 2, SS: 3, TC: 3, RT: 3, L: 4, EL: 5, UL: 6, UP: 6, UC: 7, UA: 7, UF: 7, SW: 8, OP: 9, OR: 9 };
+  const TOKEN = ["--high", "--high", "--medium", "--sidewalk", "--low", "--xlow", "--street", "--muted", "--sw", "--trail"];
+  // rating code -> share group for the route card
+  const GROUP = { H: 0, HP: 0, HU: 0, M: 1, UL: 2, SS: 3, TC: 3, RT: 3, UC: 3, UP: 3, SW: 3, L: 4, UA: 4, EL: 5, UF: 5, OP: 6, OR: 6 };
+  const GROUP_LABEL = ["rated High", "rated Medium", "unrated local street", "sidewalk, trail, collector or private road", "rated Low or unrated arterial", "Extremely Low or highway", "path from OpenStreetMap, not rated"];
+  const GROUP_TOKEN = ["--high", "--medium", "--street", "--sidewalk", "--low", "--xlow", "--trail"];
+  const OSM_CODES = new Set(["OP", "OR"]);
+  let TRAILS = { x: 1, codes: new Set() };   // from meta.trails: the multiplier and the codes that count as a trail or path
+  const BAD = new Set(["L", "EL", "UA", "UF"]);
+  const ABBR = { STREET: "ST", ROAD: "RD", AVENUE: "AVE", BOULEVARD: "BLVD", DRIVE: "DR", LANE: "LN", COURT: "CT", PLACE: "PL",
+    TRAIL: "TRL", PARKWAY: "PKWY", HIGHWAY: "HWY", CIRCLE: "CIR", TERRACE: "TER", COVE: "CV", CROSSING: "XING", BEND: "BND",
+    HOLLOW: "HOLW", RIDGE: "RDG", NORTH: "N", SOUTH: "S", EAST: "E", WEST: "W", EXPRESSWAY: "EXPY", FREEWAY: "FWY",
+    INTERSTATE: "IH", I35: "IH 35", "I-35": "IH 35", SAINT: "ST", MOUNT: "MT", SQUARE: "SQ", POINT: "PT", CREEK: "CRK", HEIGHTS: "HTS" };
+
+  // GPS works on a hosted copy over HTTPS (or localhost); the artifact viewer refuses it, so the buttons stay hidden there
+  const GEO = !ARTIFACT && !!navigator.geolocation && window.isSecureContext;
+  let G, nLat, nLon, pLat, pLon, pX, pY, off, adj, grid, gridMin, gridMax, codes, penalty, addrOf, nameTok, nameEdges, placeTok;
+  let map, streets, tiles = null, hasTiles = false, routeLayer, pins = { from: null, to: null }, placeLayer, colors = {}, stampArr, stamp = 0;
+  const state = { from: null, to: null, mode: "comfort", route: null, shortest: null, avoid: [] };
+  const CELL = 0.005;
+
+  // ---------- load and decode
+  function decode(g) {
+    G = g; codes = g.meta.codes; penalty = g.meta.penalty; SWC = codes.indexOf("SW");
+    if (g.meta.trails && g.meta.trails.x >= 1) TRAILS = { x: g.meta.trails.x, codes: new Set(g.meta.trails.codes || []) };
+    const n = g.n.length / 2;
+    nLat = new Float64Array(n); nLon = new Float64Array(n);
+    for (let i = 0; i < n; i++) { nLon[i] = (g.meta.x0 + g.n[2 * i]) / SCALE; nLat[i] = (g.meta.y0 + g.n[2 * i + 1]) / SCALE; }
+    const E = g.e, m = E.a.length;
+    off = new Int32Array(m + 1);
+    let total = 0;
+    for (let e = 0; e < m; e++) { off[e] = total; total += 2 + E.g[e].length / 2; }
+    off[m] = total;
+    pLat = new Float64Array(total); pLon = new Float64Array(total); pX = new Float64Array(total); pY = new Float64Array(total);
+    adj = new Array(n); for (let i = 0; i < n; i++) adj[i] = [];
+    grid = new Map(); gridMin = [1e9, 1e9]; gridMax = [-1e9, -1e9];
+    for (let i = 0; i < n; i++) { gridMin[0] = Math.min(gridMin[0], nLon[i]); gridMin[1] = Math.min(gridMin[1], nLat[i]); gridMax[0] = Math.max(gridMax[0], nLon[i]); gridMax[1] = Math.max(gridMax[1], nLat[i]); }
+    for (let e = 0; e < m; e++) {
+      const a = E.a[e], b = E.b[e], gg = E.g[e];
+      let k = off[e], x = g.n[2 * a], y = g.n[2 * a + 1];
+      let lo0 = 1e9, lo1 = -1e9, la0 = 1e9, la1 = -1e9;
+      const put = (xx, yy) => { const lon = (g.meta.x0 + xx) / SCALE, lat = (g.meta.y0 + yy) / SCALE; pLon[k] = lon; pLat[k] = lat; const w = merc(lat, lon); pX[k] = w[0]; pY[k] = w[1]; k++; lo0 = Math.min(lo0, lon); lo1 = Math.max(lo1, lon); la0 = Math.min(la0, lat); la1 = Math.max(la1, lat); };
+      put(x, y);
+      for (let j = 0; j < gg.length; j += 2) { x += gg[j]; y += gg[j + 1]; put(x, y); }
+      put(g.n[2 * b], g.n[2 * b + 1]);
+      adj[a].push(e); adj[b].push(e);
+      const cx0 = Math.floor((lo0 - gridMin[0]) / CELL), cx1 = Math.floor((lo1 - gridMin[0]) / CELL), cy0 = Math.floor((la0 - gridMin[1]) / CELL), cy1 = Math.floor((la1 - gridMin[1]) / CELL);
+      for (let cx = cx0; cx <= cx1; cx++) for (let cy = cy0; cy <= cy1; cy++) { const key = cx * 4096 + cy; let arr = grid.get(key); if (!arr) grid.set(key, arr = []); arr.push(e); }
+    }
+    stampArr = new Int32Array(m);
+    addrOf = new Map();
+    for (let i = 0; i < g.addr.e.length; i++) addrOf.set(g.addr.e[i], [g.addr.l[i][0], g.addr.l[i][1], g.addr.r[i][0], g.addr.r[i][1]]);
+    nameTok = g.names.map((s) => norm(s).split(" ").filter(Boolean));
+    nameEdges = new Array(g.names.length); for (let i = 0; i < nameEdges.length; i++) nameEdges[i] = [];
+    const swC = g.meta.codes.indexOf("SW");
+    for (let e = 0; e < m; e++) if (E.n[e] && E.c[e] !== swC) nameEdges[E.n[e]].push(e);
+    placeTok = g.places.map((p) => norm(p.n).split(" ").filter(Boolean));
+    decodeRisk(g);
+  }
+  function merc(lat, lon) { const s = Math.sin(lat * Math.PI / 180); return [(lon + 180) / 360 * 256, (0.5 - Math.log((1 + s) / (1 - s)) / (4 * Math.PI)) * 256]; }
+  function unmerc(x, y) { return [Math.atan(Math.sinh(Math.PI * (1 - 2 * y / 256))) * 180 / Math.PI, x / 256 * 360 - 180]; }
+  function norm(s) { return String(s).toUpperCase().replace(/[.,'#]/g, "").replace(/&/g, " AND ").replace(/[^A-Z0-9 -]+/g, " ").trim().split(/\s+/).map((t) => ABBR[t] || t).join(" "); }
+  function distFt(la1, lo1, la2, lo2) { const k = Math.cos((la1 + la2) / 2 * Math.PI / 180); return Math.hypot((lo2 - lo1) * k, la2 - la1) * M_PER_DEG * FT_PER_M; }
+
+  // ---------- spatial queries
+  function edgesInBox(la0, lo0, la1, lo1, fn) {
+    stamp++;
+    const cx0 = Math.floor((lo0 - gridMin[0]) / CELL), cx1 = Math.floor((lo1 - gridMin[0]) / CELL), cy0 = Math.floor((la0 - gridMin[1]) / CELL), cy1 = Math.floor((la1 - gridMin[1]) / CELL);
+    for (let cx = cx0; cx <= cx1; cx++) for (let cy = cy0; cy <= cy1; cy++) {
+      const arr = grid.get(cx * 4096 + cy); if (!arr) continue;
+      for (const e of arr) { if (stampArr[e] === stamp) continue; stampArr[e] = stamp; fn(e); }
+    }
+  }
+  function nearest(la, lo) {
+    const k = Math.cos(la * Math.PI / 180); let best = null;
+    for (let r = 0; r <= 2 && !best; r++) {
+      const pad = (r + 0.5) * CELL;
+      edgesInBox(la - pad, lo - pad, la + pad, lo + pad, (e) => {
+        for (let i = off[e]; i < off[e + 1] - 1; i++) {
+          const ax = pLon[i] * k, ay = pLat[i], bx = pLon[i + 1] * k, by = pLat[i + 1], px = lo * k, py = la;
+          const dx = bx - ax, dy = by - ay, n = dx * dx + dy * dy;
+          const t = n === 0 ? 0 : Math.max(0, Math.min(1, ((px - ax) * dx + (py - ay) * dy) / n));
+          const qx = ax + t * dx, qy = ay + t * dy, d = Math.hypot(px - qx, py - qy) * M_PER_DEG;
+          if (!best || d < best.d) best = { e, k: i - off[e], t, d, la: qy, lo: qx / k };
+        }
+      });
+    }
+    if (!best) return null;
+    const cum = edgeCum(best.e);
+    best.at = cum[best.k] + best.t * (cum[best.k + 1] - cum[best.k]);
+    best.len = cum[cum.length - 1];
+    return best;
+  }
+  function edgeCum(e) {
+    const n = off[e + 1] - off[e], cum = new Float64Array(n);
+    for (let i = 1; i < n; i++) cum[i] = cum[i - 1] + distFt(pLat[off[e] + i - 1], pLon[off[e] + i - 1], pLat[off[e] + i], pLon[off[e] + i]);
+    return cum;
+  }
+
+  // ---------- routing: A* over the street graph, start and end projected onto their nearest edges
+  class Heap {
+    constructor() { this.k = []; this.v = []; }
+    push(k, v) { const K = this.k, V = this.v; let i = K.length; K.push(k); V.push(v); while (i > 0) { const p = (i - 1) >> 1; if (K[p] <= K[i]) break; [K[p], K[i]] = [K[i], K[p]]; [V[p], V[i]] = [V[i], V[p]]; i = p; } }
+    pop() { const K = this.k, V = this.v, top = [K[0], V[0]], lk = K.pop(), lv = V.pop(); if (K.length) { K[0] = lk; V[0] = lv; let i = 0; for (;;) { const l = 2 * i + 1, r = l + 1; let s = i; if (l < K.length && K[l] < K[s]) s = l; if (r < K.length && K[r] < K[s]) s = r; if (s === i) break; [K[s], K[i]] = [K[i], K[s]]; [V[s], V[i]] = [V[i], V[s]]; i = s; } } return top; }
+    get size() { return this.k.length; }
+  }
+  // av: { nodes, edges } (Sets of indices) to avoid: every edge in it, and every edge meeting one of its nodes, costs AVOID_X
+  // times as much; costs only go up, so the straight-line lower bound stays admissible
+  function avoidMask(av) {
+    if (!av || (!av.nodes.size && !av.edges.size)) return null;
+    const m = G.e.a.length, mask = new Uint8Array(m);
+    for (const e of av.edges) if (e >= 0 && e < m) mask[e] = 1;
+    for (const nd of av.nodes) if (adj[nd]) for (const e of adj[nd]) mask[e] = 1;
+    return mask;
+  }
+  // tx: under Trails first, every foot not on a trail or path costs tx times as much (1 elsewhere); costs only go up, so the
+  // straight-line lower bound stays admissible
+  function plan(S, T, w, av, tx) {
+    const E = G.e, n = nLat.length, tm = codes.map((c) => tx > 1 && !TRAILS.codes.has(c) ? tx : 1), mt = penalty.map((p, c) => (1 + w * p) * tm[c]), mask = avoidMask(av), X = (e) => mask && mask[e] ? AVOID_X : 1;
+    const rp = w > 0 ? riders.pen : null, cf = (e) => rp !== null && rp[e] >= 0 ? (1 + w * rp[e]) * tm[E.c[e]] : mt[E.c[e]];   // riders' notes nudge a street's penalty
+    const g = new Float64Array(n).fill(Infinity), prev = new Int32Array(n).fill(-1), closed = new Uint8Array(n), heap = new Heap();
+    const h = (u) => distFt(nLat[u], nLon[u], T.la, T.lo);
+    const sa = E.a[S.e], sb = E.b[S.e], sc = cf(S.e) * X(S.e), sow = E.ow[S.e];
+    const ta = E.a[T.e], tb = E.b[T.e], tc = cf(T.e) * X(T.e), tow = E.ow[T.e];
+    let best = Infinity, bestEnd = -1, direct = false;
+    if (S.e === T.e && ((T.at >= S.at && sow !== 2) || (T.at <= S.at && sow !== 1))) { best = Math.abs(T.at - S.at) * sc; direct = true; }
+    if (sow !== 1) { g[sa] = S.at * sc; prev[sa] = -2; heap.push(g[sa] + h(sa), sa); }
+    if (sow !== 2) { const c = (S.len - S.at) * sc; if (c < g[sb]) { g[sb] = c; prev[sb] = -3; heap.push(c + h(sb), sb); } }
+    while (heap.size) {
+      const [f, u] = heap.pop();
+      if (f >= best) break;
+      if (closed[u]) continue;
+      closed[u] = 1;
+      if (u === ta && tow !== 2) { const c = g[u] + T.at * tc; if (c < best) { best = c; bestEnd = u; direct = false; } }
+      if (u === tb && tow !== 1) { const c = g[u] + (T.len - T.at) * tc; if (c < best) { best = c; bestEnd = u; direct = false; } }
+      const A = adj[u];
+      for (let i = 0; i < A.length; i++) {
+        const e = A[i], a = E.a[e], ow = E.ow[e];
+        let v; if (u === a) { if (ow === 2) continue; v = E.b[e]; } else { if (ow === 1) continue; v = a; }
+        if (closed[v]) continue;
+        const ng = g[u] + E.ft[e] * cf(e) * (mask !== null && mask[e] ? AVOID_X : 1);
+        if (ng < g[v]) { g[v] = ng; prev[v] = e; heap.push(ng + h(v), v); }
+      }
+    }
+    if (best === Infinity) return null;
+    const steps = [];
+    if (direct) { steps.push({ e: S.e, f0: S.at / S.len, f1: T.at / T.len }); }
+    else {
+      let u = bestEnd;
+      steps.push({ e: T.e, f0: u === ta ? 0 : 1, f1: T.at / T.len });
+      while (prev[u] >= 0) { const e = prev[u], a = E.a[e], v = u === a ? E.b[e] : a; steps.push({ e, f0: v === a ? 0 : 1, f1: u === a ? 0 : 1 }); u = v; }
+      steps.push({ e: S.e, f0: S.at / S.len, f1: prev[u] === -2 ? 0 : 1 });
+      steps.reverse();
+    }
+    return { steps, cost: best };
+  }
+  function stepCoords(st) {
+    const e = st.e, cum = edgeCum(e), len = cum[cum.length - 1], d0 = st.f0 * len, d1 = st.f1 * len, lo = Math.min(d0, d1), hi = Math.max(d0, d1), out = [];
+    const at = (d) => { let i = 1; while (i < cum.length - 1 && cum[i] < d) i++; const t = (cum[i] - cum[i - 1]) ? (d - cum[i - 1]) / (cum[i] - cum[i - 1]) : 0; const k = off[e] + i - 1; return [pLat[k] + t * (pLat[k + 1] - pLat[k]), pLon[k] + t * (pLon[k + 1] - pLon[k])]; };
+    out.push(at(lo));
+    for (let i = 0; i < cum.length; i++) if (cum[i] > lo && cum[i] < hi) out.push([pLat[off[e] + i], pLon[off[e] + i]]);
+    out.push(at(hi));
+    if (d1 < d0) out.reverse();
+    return out;
+  }
+  function summarize(r) {
+    const E = G.e, miles = new Array(codes.length).fill(0), cues = [], stepCue = [];
+    let total = 0;
+    for (const st of r.steps) {
+      const mi = Math.abs(st.f1 - st.f0) * E.ft[st.e] / 5280, c = E.c[st.e];
+      miles[c] += mi; total += mi;
+      const name = codes[c] === "SW" ? "Sidewalk along " + (G.names[E.n[st.e]] || "a big road") : G.names[E.n[st.e]] || trailName(st.e), last = cues[cues.length - 1];
+      if (last && last.name === name) { last.mi += mi; if (penalty[c] > penalty[last.c]) { last.c = c; } last.steps.push(st); }
+      else cues.push({ name, c, mi, fac: G.fac[E.f[st.e]], steps: [st], sepFt: [0, 0, 0, 0, 0, 0], sp: 0, hin: 0, expFt: 0, c21: 0, sf: 0 });
+      const cu = cues[cues.length - 1]; stepCue.push(cues.length - 1);
+      if (RISK) { const ft = mi * 5280; cu.sepFt[E.sep[st.e]] += ft; cu.sp = Math.max(cu.sp, E.sp[st.e]); cu.hin |= E.hin[st.e]; if (E.exp[st.e]) cu.expFt += ft; }
+    }
+    // the turn onto each street, from the line's bearing at the end of the street before and the start of this one
+    let prevEnd = null;
+    for (const c of cues) {
+      const d0 = dirs(c.steps[0]), d1 = c.steps.length > 1 ? dirs(c.steps[c.steps.length - 1]) : d0;
+      c.at = d0.p0; c.deg = prevEnd === null ? null : ((d0.start - prevEnd) % 360 + 540) % 360 - 180;
+      c.turn = prevEnd === null ? "Head " + COMPASS[Math.round(d0.start / 45) % 8] + " on" : turnWord(c.deg);
+      prevEnd = d1.end;
+    }
+    return { miles, total, cues, stepCue };
+  }
+  const COMPASS = ["north", "northeast", "east", "southeast", "south", "southwest", "west", "northwest"];
+  function bearing(p, q) { const k = Math.cos((p[0] + q[0]) / 2 * Math.PI / 180); return (Math.atan2((q[1] - p[1]) * k, q[0] - p[0]) * 180 / Math.PI + 360) % 360; }   // 0 north, clockwise
+  // a step's bearing over its first and last 10 ft or more, and its first point
+  function dirs(st) {
+    const pts = stepCoords(st), n = pts.length;
+    let i = 1; while (i < n - 1 && distFt(pts[0][0], pts[0][1], pts[i][0], pts[i][1]) < 10) i++;
+    let j = n - 2; while (j > 0 && distFt(pts[j][0], pts[j][1], pts[n - 1][0], pts[n - 1][1]) < 10) j--;
+    return { start: bearing(pts[0], pts[i]), end: bearing(pts[j], pts[n - 1]), p0: pts[0] };
+  }
+  // deg: the change of bearing, right positive, -180 to 180
+  function turnWord(deg) { const a = Math.abs(deg), side = deg > 0 ? "right" : "left"; return a < 25 ? "Continue onto" : a < 65 ? "Bear " + side + " onto" : a < 155 ? "Turn " + side + " onto" : "Sharp " + side + " onto"; }
+  const trailMiles = (sum) => sum.miles.reduce((s, m, c) => s + (TRAILS.codes.has(codes[c]) ? m : 0), 0);
+  // ---------- high-crash junctions and exposed stretches (the builder's risk pass; ROUTING.md, "High-crash spots").
+  // Crashes are police reports of bike and scooter crashes; they undercount, and busier streets log more.
+  const SEP_LABEL = ["trail", "protected lane", "painted lane", "shared lane or shoulder", "no bike facility", "sidewalk"];
+  const MIN_STRETCH_FT = 100;
+  const MERGE_GAP_FT = 1320;
+  let RISK = false, cLat, cLon, hotLayer = null, SWC = -1;
+  function decodeRisk(g) {
+    RISK = !!(g.jx && g.crash && g.e.exp && g.meta.hot);
+    if (!RISK) return;
+    const C = g.crash, n = C.x.length;
+    cLat = new Float64Array(n); cLon = new Float64Array(n);
+    for (let i = 0; i < n; i++) { cLon[i] = (g.meta.x0 + C.x[i]) / SCALE; cLat[i] = (g.meta.y0 + C.y[i]) / SCALE; }
+    g.sigSet = new Set(g.sig || []);
+  }
+  // the route as short segments with the distance along it, in a coarse grid, for "within N ft of the route"
+  function routeIndex(r) {
+    const segs = [], grid = new Map(), C2 = 0.002, pad = 0.0004; let along = 0;
+    r.steps.forEach((st, si) => {
+      const pts = stepCoords(st);
+      for (let i = 0; i < pts.length - 1; i++) {
+        const a0 = pts[i][0], o0 = pts[i][1], a1 = pts[i + 1][0], o1 = pts[i + 1][1], d = distFt(a0, o0, a1, o1), s = segs.length;
+        segs.push([a0, o0, a1, o1, si, along, d]); along += d;
+        for (let cx = Math.floor((Math.min(o0, o1) - pad) / C2); cx <= Math.floor((Math.max(o0, o1) + pad) / C2); cx++)
+          for (let cy = Math.floor((Math.min(a0, a1) - pad) / C2); cy <= Math.floor((Math.max(a0, a1) + pad) / C2); cy++) {
+            const key = cx * 100000 + cy; let arr = grid.get(key); if (!arr) grid.set(key, arr = []); if (arr[arr.length - 1] !== s) arr.push(s);
+          }
+      }
+    });
+    return { segs, grid, C2 };
+  }
+  function nearRoute(ix, la, lo) {
+    const arr = ix.grid.get(Math.floor(lo / ix.C2) * 100000 + Math.floor(la / ix.C2)); if (!arr) return null;
+    const k = Math.cos(la * Math.PI / 180); let best = null;
+    for (const s of arr) {
+      const g = ix.segs[s], ax = g[1] * k, ay = g[0], bx = g[3] * k, by = g[2], px = lo * k, py = la, dx = bx - ax, dy = by - ay, n = dx * dx + dy * dy;
+      const t = n ? Math.max(0, Math.min(1, ((px - ax) * dx + (py - ay) * dy) / n)) : 0, d = Math.hypot(px - ax - t * dx, py - ay - t * dy) * M_PER_DEG * FT_PER_M;
+      if (!best || d < best.d) best = { d, along: g[5] + t * g[6], step: g[4] };
+    }
+    return best;
+  }
+  // crashes within 60 ft of the line, the high-crash junctions within 75 ft of it, and the exposed stretches along it
+  function riskOf(r, sum) {
+    if (!RISK) return null;
+    const H = G.meta.hot, E = G.e, C = G.crash, ix = routeIndex(r);
+    let c21 = 0, sf = 0; const crashes = [], stepHits = new Map();
+    for (const c of sum.cues) { c.c21 = 0; c.sf = 0; }
+    for (let i = 0; i < cLat.length; i++) {
+      if (C.yr[i] < H.since) continue;
+      const q = nearRoute(ix, cLat[i], cLon[i]); if (!q || q.d > H.snap_ft) continue;
+      c21++; if (C.sev[i]) sf++; crashes.push(i);
+      const cu = sum.cues[sum.stepCue[q.step]]; cu.c21++; if (C.sev[i]) cu.sf++;
+      const h = stepHits.get(q.step) || [0, 0]; h[0]++; if (C.sev[i]) h[1]++; stepHits.set(q.step, h);
+    }
+    const items = [];
+    G.jx.n.forEach((nd, j) => { if (!G.jx.hot[j]) return; const q = nearRoute(ix, nLat[nd], nLon[nd]); if (q && q.d <= H.junction_ft) items.push({ kind: "junction", j, node: nd, along: q.along, tok: "j" + j.toString(36) }); });
+    // an exposed stretch continues across a non-exposed gap of under MERGE_GAP_FT on the same street, so one street
+    // is one Watch-out item; ft counts only the exposed feet
+    let along = 0, cur = null, last = null, lastEnd = 0;
+    r.steps.forEach((st, si) => {
+      const e = st.e, len = Math.abs(st.f1 - st.f0) * E.ft[e], name = G.names[E.n[e]] || trailName(e);
+      if (E.exp[e] && len > 0) {
+        if (!cur && last && last.name === name && along - lastEnd < MERGE_GAP_FT) cur = last;
+        if (!cur || cur.name !== name) { cur = { kind: "stretch", name, along, ft: 0, steps: [], edges: [], sepFt: [0, 0, 0, 0, 0, 0], sp: 0, ln: 0, hin: 0, c21: 0, sf: 0 }; items.push(cur); }
+        last = cur; lastEnd = along + len;
+        cur.ft += len; cur.steps.push(si); if (!cur.edges.includes(e)) cur.edges.push(e); cur.sepFt[E.sep[e]] += len; cur.sp = Math.max(cur.sp, E.sp[e]); cur.ln = Math.max(cur.ln, E.ln[e]); cur.hin |= E.hin[e];
+        const h = stepHits.get(si); if (h) { cur.c21 += h[0]; cur.sf += h[1]; }
+      } else if (len > 1) cur = null;
+      along += len;
+    });
+    const all = items.filter((it) => it.kind === "junction" || it.ft >= MIN_STRETCH_FT).sort((a, b) => a.along - b.along);
+    for (const it of all) if (it.kind === "stretch") it.tok = "s" + it.edges.map((e) => e.toString(36)).join("-");
+    // the card lists at most eight: every junction first (most crashes first), then the longest stretches; shown in route order
+    const rank = all.slice().sort((a, b) => (a.kind === "junction" ? 0 : 1) - (b.kind === "junction" ? 0 : 1) || (a.kind === "junction" ? G.jx.c21[b.j] - G.jx.c21[a.j] : b.ft - a.ft));
+    const keep = new Set(rank.slice(0, 8)), shown = all.filter((it) => keep.has(it));
+    return { c21, sf, crashes, all, shown, more: all.length - shown.length, hot: all.filter((it) => it.kind === "junction").length, ix };
+  }
+  function junctionName(nd) {
+    const seen = []; for (const e of adj[nd]) { const nm = codes[G.e.c[e]] === "SW" ? "" : G.names[G.e.n[e]]; if (nm && !seen.includes(nm)) seen.push(nm); }
+    return !seen.length ? "an unnamed junction" : seen.length === 1 ? seen[0] : seen[0] + " at " + seen.slice(1, 3).join(" and ");
+  }
+  function collision(t) { const s = G.meta.collisions[t] || ""; return s.toLowerCase().replace(/\s+-\s+/g, ", ").replace(/\s+/g, " "); }
+  const plural = (k, one, many) => k.toLocaleString() + " " + (k === 1 ? one : many);
+  function sepOf(sepFt) { let b = 4, m = -1; sepFt.forEach((v, i) => { if (v > m) { m = v; b = i; } }); return b; }
+  // every word the page says about crashes and exposure comes from here, so the list, the cards, the cue sheet and the
+  // Read-first tab agree. Words: "high-crash" is a count, "exposed" is the rule below; the words rule is in biking/AGENTS.md.
+  function sentence(it, form) {
+    const H = G.meta.hot, fine = '<p class="fine">Police reports of bike and scooter crashes, ' + H.crash_dates[0] + " to " + H.crash_dates[1] + ". They undercount, and busier streets log more.</p>";
+    if (it.kind === "junction") {
+      const j = it.j, c21 = G.jx.c21[j], sf = G.jx.sf[j], f15 = G.jx.f15[j], where = junctionName(it.node);
+      const counts = plural(c21, "crash", "crashes") + " since " + H.since + (sf ? ", " + sf + " serious or fatal" : "") + (f15 ? "; " + plural(f15, "fatal crash", "fatal crashes") + " since " + H.fatal_since : "");
+      if (form === "ahead") return "Ahead: high-crash intersection, " + where + " (" + counts + ")";
+      if (form === "speak") return "Coming up: high-crash intersection, " + spoken(where) + ".";
+      if (form !== "card") return "High-crash intersection: " + where + ", " + counts + ".";
+      const words = G.jx.t[j].map(collision).filter(Boolean), C = G.crash, k = Math.cos(nLat[it.node] * Math.PI / 180), serious = [];
+      for (let i = 0; i < cLat.length; i++) if (C.sev[i] && Math.hypot((cLon[i] - nLon[it.node]) * k, cLat[i] - nLat[it.node]) * M_PER_DEG * FT_PER_M <= H.junction_ft) serious.push(i);
+      serious.sort((a, b) => C.yr[b] - C.yr[a]);
+      const sig = G.sigSet.has(it.node) ? "A traffic signal is on the city's list within " + H.signal_ft + " ft." : "No traffic signal on the city's list within " + H.signal_ft + " ft.";
+      return "<b>High-crash intersection</b><p>" + esc(where) + "</p><p>Within " + H.junction_ft + " ft: " + esc(counts) + ". " + plural(G.jx.a[j], "crash", "crashes") + " here since " + H.crash_dates[0] + ".</p>" +
+        (serious.length ? "<p>Serious or fatal: " + serious.slice(0, 4).map((i) => C.yr[i] + ", " + (C.sev[i] === 2 ? "fatal" : "serious injury") + (collision(C.t[i]) ? ", " + esc(collision(C.t[i])) : "") + (C.sp[i] ? ", " + C.sp[i] + " mph posted" : "")).join("; ") + (serious.length > 4 ? "; " + (serious.length - 4) + " more" : "") + ".</p>" : words.length ? "<p>" + esc(words.join("; ")) + "</p>" : "") +
+        "<p>" + sig + "</p>" + fine;
+    }
+    if (it.kind === "stretch" || it.kind === "cue") {
+      const sep = sepOf(it.sepFt), facts = [];
+      if (it.kind === "stretch") facts.push((it.ft / 5280).toFixed(it.ft < 528 ? 2 : 1) + " mi");
+      facts.push(SEP_LABEL[sep]);
+      if (sep !== 0 && it.sp) facts.push(it.sp + " mph");
+      if (it.kind === "stretch" && it.ln) facts.push(plural(it.ln, "through lane", "through lanes"));
+      if (it.hin) facts.push(it.kind === "cue" ? "High-Injury Network" : "on the city's High-Injury Network");
+      facts.push(plural(it.c21, "crash", "crashes") + " since " + H.since + (it.sf ? " (" + it.sf + " serious or fatal)" : ""));
+      if (it.kind === "cue") return facts.join(" \u00b7 ");
+      if (form === "ahead") return "Ahead: exposed stretch, " + it.name + " (" + facts.join(", ") + ")";
+      if (form === "speak") return "Coming up: exposed stretch on " + spoken(it.name) + ", " + (it.ft / 5280 < 0.1 ? "under a tenth of a mile" : ((m) => m === "1" ? "1 mile" : m + " miles")((it.ft / 5280).toFixed(1).replace(/\.0$/, ""))) + ", " + (sep === 4 ? "no bike facility" : SEP_LABEL[sep]) + (sep !== 0 && it.sp ? ", " + it.sp + " miles an hour" : "") + ".";
+      if (form !== "card") return "Exposed stretch: " + it.name + ", " + facts.join(", ") + ".";
+      const why = [it.hin ? "it is on the city's High-Injury Network" : null, sep === 4 && it.sp >= H.speed_no_facility ? "it has no bike facility at " + it.sp + " mph" : null].filter(Boolean);
+      return "<b>Exposed stretch</b><p>" + esc(it.name) + "</p><p>" + esc(facts.join(", ")) + ".</p><p>Marked because " + (why.length ? why.join(" and ") : "it logged " + H.per_quarter_mile + " or more crashes since " + H.since + " per quarter mile") + ". Crashes counted within " + H.snap_ft + " ft of the route line.</p>" + fine;
+    }
+    // stage 4: a stretch on a sidewalk beside a big road. The short sentences say "where posted"; the rule note (swrule)
+    // carries what City Code § 12-2-13 says, from the last public copy found (see biking/ROUTING.md)
+    if (it.kind === "sidewalk") {
+      const mi = (it.mi).toFixed(it.mi < 0.1 ? 2 : 1);
+      return mi + " mi on the sidewalk along " + it.along + ": ride slowly, yield to walkers, not allowed where posted.";
+    }
+    if (it.kind === "sidewalks") return it.mi.toFixed(1) + " mi on sidewalks beside big roads: ride slowly, yield to walkers, not allowed where posted.";
+    if (it.kind === "swrule") {
+      const S = G.meta.sw;
+      return "Where a big road has a city sidewalk beside it, the planner can put you on the sidewalk (drawn dashed in purple from zoom 14): " +
+        Math.round(S.miles).toLocaleString() + " mi of the city's existing sidewalks within " + S.near_ft + " ft of a street rated Low or Extremely Low or an unrated arterial or highway, joined to the streets at the corners. " +
+        "A sidewalk costs more than a Helpful sidewalk the city rated and less than a Low street: it is slow, shared with people walking, and driveways cross it. " +
+        "Ride slowly and yield to walkers. City Code § 12-2-13 (formerly § 16-8-22) allows riding on a sidewalk in a reasonable and prudent manner, except on the downtown blocks it lists: " +
+        "Congress Ave 100 to 1100, Guadalupe St 1900 to 2500, Brazos St 100 to 1100, Colorado St 200 to 1100, and parts of 2nd, 5th, 6th and 8th streets. " +
+        "That is the last public copy found (1999 to 2008); check the current code. The planner does not yet keep off those blocks. Riding on the sidewalk is not allowed where posted.";
+    }
+    if (it.kind === "totals") {
+      const here = it.here, sh = it.short;
+      return "Crashes within " + H.snap_ft + " ft of this route since " + H.since + ": " + here.c21 + " (" + here.sf + " serious or fatal)" + (sh ? "; shortest way: " + sh.c21 + " (" + sh.sf + ")" : "") + ". Police reports undercount, and busier streets log more.";
+    }
+    if (it.kind === "rule") {
+      return "A high-crash intersection has " + H.junction_min + " or more police-reported bike or scooter crashes since " + H.since + " within " + H.junction_ft + " ft, or a fatal crash since " + H.fatal_since +
+        "; an exposed stretch is on the city's High-Injury Network, or has no bike facility at " + H.speed_no_facility + " mph or more, or logged " + H.per_quarter_mile + " or more crashes since " + H.since + " per quarter mile. Citywide that marks " +
+        plural(H.junctions_hot, "intersection", "intersections") + " and " + Math.round(H.exposed_miles).toLocaleString() + " mi of street in " + H.exposed_stretches.toLocaleString() + " stretches. Each crash (" + H.crash_dates[0] + " to " + H.crash_dates[1] + ") is matched to the nearest street within " + H.snap_ft + " ft; " +
+        H.crashes_snapped.toLocaleString() + " of " + H.crashes_located.toLocaleString() + " matched (" + (100 * H.unmatched_share).toFixed(1) + "% were farther from any street). The thresholds are a first setting, to be tuned.";
+    }
+    return "";
+  }
+  // a street name as a voice should say it: "S Lamar Blvd at W Mary St" -> "South Lamar at West Mary"
+  const SAY_DIR = { N: "North", S: "South", E: "East", W: "West" };
+  const SAY_DROP = new Set(["St", "Rd", "Ave", "Blvd", "Dr", "Ln", "Ct", "Pl", "Trl", "Pkwy", "Cir", "Ter", "Cv", "Way", "Loop", "Pass", "Path", "Run", "Xing", "Bnd", "Holw", "Rdg", "Sq", "Pt"]);
+  function spoken(s) {
+    return String(s).split(/( at | and )/).map((part) => {
+      if (part === " at " || part === " and ") return part;
+      const t = part.trim().split(/\s+/);
+      if (t.length > 1 && SAY_DIR[t[0]]) t[0] = SAY_DIR[t[0]];
+      if (t.length > 1 && SAY_DROP.has(t[t.length - 1])) t.pop();
+      return t.join(" ").replace(/\bHwy\b/g, "Highway").replace(/\bIh\b/gi, "I").replace(/\bSt\b/g, "Saint");
+    }).join("");
+  }
+
+  // ---------- stage 3: a way around. An avoided spot is a token: "j" + the junction's index in jx, or "s" + the
+  // stretch's edge indices joined by "-", all base 36, so the URL hash holds only letters, digits and "-" (tokens joined by "~").
+  let hotSet = null;
+  function hotAvoid() {
+    if (!RISK) return null;
+    if (!hotSet) {
+      const nodes = new Set(), edges = new Set();
+      G.jx.n.forEach((nd, j) => { if (G.jx.hot[j]) nodes.add(nd); });
+      for (let e = 0; e < G.e.exp.length; e++) if (G.e.exp[e]) edges.add(e);
+      hotSet = { nodes, edges };
+    }
+    return hotSet;
+  }
+  function parseTok(t) {
+    if (!RISK || typeof t !== "string") return null;
+    if (/^j[0-9a-z]{1,6}$/.test(t)) { const j = parseInt(t.slice(1), 36); if (j < G.jx.n.length) return { tok: t, kind: "junction", j, node: G.jx.n[j], name: junctionName(G.jx.n[j]) }; }
+    if (/^s[0-9a-z]{1,6}(-[0-9a-z]{1,6})*$/.test(t)) {
+      const edges = t.slice(1).split("-").map((x) => parseInt(x, 36)).filter((e) => e < G.e.a.length);
+      if (edges.length) return { tok: t, kind: "stretch", edges, name: G.names[G.e.n[edges[0]]] || trailName(edges[0]) };
+    }
+    return null;
+  }
+  // the user's avoided spots as sets, merged with the citywide set when "Avoid hotspots" is on
+  function avoidSets(spots, glob) {
+    if (!spots.length && !glob) return null;
+    const nodes = new Set(glob ? glob.nodes : []), edges = new Set(glob ? glob.edges : []);
+    for (const sp of spots) { if (sp.kind === "junction") nodes.add(sp.node); else for (const e of sp.edges) edges.add(e); }
+    return { nodes, edges };
+  }
+  // the junctions a route goes through and the edges it rides
+  function routeUses(r) {
+    const nodes = new Set(), edges = new Set(), E = G.e;
+    for (const st of r.steps) { edges.add(st.e); if (st.f0 === 0 || st.f1 === 0) nodes.add(E.a[st.e]); if (st.f0 === 1 || st.f1 === 1) nodes.add(E.b[st.e]); }
+    return { nodes, edges };
+  }
+  const expMi = (r) => r.steps.reduce((s, st) => s + (G.e.exp[st.e] ? Math.abs(st.f1 - st.f0) * G.e.ft[st.e] : 0), 0) / 5280;
+  const passes = (u, sp) => sp.kind === "junction" ? u.nodes.has(sp.node) : sp.edges.some((e) => u.edges.has(e));
+  const isAvoided = (tok) => !!tok && state.avoid.includes(tok);
+  function setAvoid(tok, on) {
+    const i = state.avoid.indexOf(tok);
+    if (on && i < 0 && parseTok(tok)) state.avoid.push(tok); else if (!on && i >= 0) state.avoid.splice(i, 1); else return;
+    if (map) map.closePopup();
+    if (state.from && state.to) route(); else { drawRoute(); writeHash(); }
+  }
+  const signedMi = (d) => (d < -0.04 ? "−" + Math.abs(d).toFixed(1) : "+" + Math.max(0, d).toFixed(1)) + " mi";
+  const andList = (xs) => xs.length < 2 ? xs.join("") : xs.slice(0, -1).join(", ") + " and " + xs[xs.length - 1];
+  // the tap-card: the sentence plus the button that routes around the spot or stops avoiding it
+  function cardOf(it) {
+    let h = sentence(it, "card");
+    if (it.tok && state.from && state.to) h += isAvoided(it.tok) ? '<button class="btn" type="button" data-unavoid="' + it.tok + '">Stop avoiding this</button>' : '<button class="btn" type="button" data-avoid="' + it.tok + '">Route around this</button>';
+    return h;
+  }
+  // the card's lines for stage 3: what avoiding the chosen spots cost, and what "Avoid hotspots" got around
+  function avoidLines(R) {
+    const out = [], A = R.avoid;
+    if (A && A.hot) {
+      const h = A.hot;
+      const what = [h.junctions ? plural(h.junctions, "high-crash intersection", "high-crash intersections") : null, h.stretches ? plural(h.stretches, "exposed stretch", "exposed stretches") : null].filter(Boolean).join(", ");
+      out.push((!h.of ? "The comfort route passes no high-crash intersection or exposed stretch; "
+        : h.n ? "Avoids " + h.n + " of the " + h.of + " flagged spots the comfort route passes (" + what + "); "
+        : "Gets around none of the " + h.of + " flagged spots the comfort route passes; ") + signedMi(h.addMi) + " over the comfort route." +
+        (h.of && h.n < h.of ? " The " + (!h.n ? (h.of === 1 ? "spot is" : "spots are") : h.of - h.n === 1 ? "other is" : "others are") + " on the only way through, or the way around costs more than 50 times their length." : ""));
+      if (h.expBefore > 0.05 || h.expAfter > 0.05) out.push("Exposed street on the way: " + h.expAfter.toFixed(1) + " mi, against " + h.expBefore.toFixed(1) + " mi on the comfort route.");
+    }
+    if (A && A.spots.length) {
+      const around = A.spots.filter((sp) => sp.around), failed = A.spots.filter((sp) => sp.failed), off = A.spots.filter((sp) => !sp.around && !sp.failed);
+      if (around.length) out.push(signedMi(A.detourMi) + " to go around " + andList(around.map((sp) => sp.name)) + ".");
+      if (failed.length) out.push("The detour failed for " + andList(failed.map((sp) => sp.name)) + ": nothing else connects, so the route still goes through " + (failed.length === 1 ? "it." : "them."));
+      if (off.length) out.push("Also avoiding " + andList(off.map((sp) => sp.name)) + ", which this route would not pass anyway.");
+    }
+    return out;
+  }
+
+  // ---------- riders' notes. Each rider the page is shared with keeps one document, notes/<their id>, holding
+  // { v: { <street key>: 1 prefer | -1 avoid } }; everyone reads every document and sees only the counts. A street key
+  // is the street's name plus the 0.01-degree map square its piece sits in, so a note covers that street for about
+  // half a mile and survives a rebuilt graph. Once RIDER_MIN more riders lean one way than the other, plan() rides
+  // that street at half its penalty (prefer) or its penalty plus AVOID_ADD (avoid); Shortest ignores the notes.
+  const RIDER_MIN = 3, RIDER_CELL = 0.01, PREFER_X = 0.5, AVOID_ADD = 1.5;
+  const riders = { db: null, uid: null, canWrite: false, mine: {}, tally: new Map(), pen: null, sig: "", keyEdges: null, picking: false, layer: null, busy: Promise.resolve() };
+  const streetLabel = (e) => G.names[G.e.n[e]] || trailName(e);
+  function riderKey(e) {
+    const a = G.e.a[e], b = G.e.b[e];
+    return streetLabel(e).replace(/[^A-Za-z0-9 &'-]+/g, " ").trim() + "|" + Math.floor((nLat[a] + nLat[b]) / 2 / RIDER_CELL) + "|" + Math.floor((nLon[a] + nLon[b]) / 2 / RIDER_CELL);
+  }
+  function riderEdges() {
+    if (!riders.keyEdges) { const m = new Map(); for (let e = 0; e < G.e.a.length; e++) { const k = riderKey(e); let a = m.get(k); if (!a) m.set(k, a = []); a.push(e); } riders.keyEdges = m; }
+    return riders.keyEdges;
+  }
+  const riderNet = (k) => { const t = riders.tally.get(k); return t ? t.p - t.a : 0; };
+  // the counts from every rider's document, and the per-edge penalties they move
+  function setTally(tally) {
+    riders.tally = tally;
+    const idx = riderEdges(), on = [];
+    let pen = null;
+    for (const [k, t] of tally) {
+      const net = t.p - t.a, es = idx.get(k); if (Math.abs(net) < RIDER_MIN || !es) continue;
+      if (!pen) pen = new Float64Array(G.e.a.length).fill(-1);
+      for (const e of es) { const p0 = penalty[G.e.c[e]]; pen[e] = net > 0 ? p0 * PREFER_X : p0 + AVOID_ADD; }
+      on.push(k + (net > 0 ? "+" : "-"));
+    }
+    riders.pen = pen;
+    const sig = on.sort().join(","), moved = sig !== riders.sig; riders.sig = sig;
+    if (state.from && state.to && moved) route(); else if (state.route) render();
+  }
+  function tallyOf(docs) {
+    const t = new Map();
+    for (const d of docs) {
+      const v = d && typeof d.v === "object" && d.v ? d.v : {};
+      for (const k of Object.keys(v)) { if (v[k] !== 1 && v[k] !== -1) continue; let c = t.get(k); if (!c) t.set(k, c = { p: 0, a: 0 }); if (v[k] === 1) c.p++; else c.a++; }
+    }
+    return t;
+  }
+  // a cue's keys, the busiest key's counts, and this rider's note on it (1, -1, or 0 when mixed or none)
+  function cueKeys(c) { const ks = new Set(); for (const st of c.steps) ks.add(riderKey(st.e)); return [...ks]; }
+  function countsOf(keys) {
+    let best = { p: 0, a: 0 };
+    for (const k of keys) { const t = riders.tally.get(k); if (t && t.p + t.a > best.p + best.a) best = t; }
+    const mine = keys.map((k) => riders.mine[k] || 0), m = mine.every((x) => x === mine[0]) ? mine[0] : 0;
+    return { p: best.p, a: best.a, mine: m };
+  }
+  function countLine(c) { return !c.p && !c.a ? "No riders' notes yet" : "Riders: " + [c.p ? c.p + " prefer" : null, c.a ? c.a + " avoid" : null].filter(Boolean).join(" · "); }
+  function riderButtons(keys, mine) {
+    if (!riders.canWrite) return "";
+    const k = esc(keys.join("\n"));
+    return '<button class="rbtn" type="button" data-r="1" data-k="' + k + '" aria-pressed="' + (mine === 1) + '">Prefer</button>' +
+      '<button class="rbtn" type="button" data-r="-1" data-k="' + k + '" aria-pressed="' + (mine === -1) + '">Avoid</button>';
+  }
+  // a tap on a Prefer or Avoid button: pressing the one already on clears the note
+  function noteKeys(keys, val, label) {
+    if (!riders.db || !riders.canWrite || !riders.uid) return;
+    const cur = countsOf(keys).mine, next = cur === val ? 0 : val, v = Object.assign({}, riders.mine);
+    for (const k of keys) { if (next) v[k] = next; else delete v[k]; }
+    riders.mine = v;
+    if (state.route) render();
+    riders.busy = riders.busy.then(() => riders.db.doc("notes/" + riders.uid).set({ v })).then(
+      () => toast(next ? "Saved: you " + (next > 0 ? "prefer " : "avoid ") + label : "Note cleared for " + label),
+      (e) => { if (e && e.code === "invalid_argument") { riders.canWrite = false; $("notebtn").hidden = true; toast("Your notes can't be saved: the page's owner can share it with you as a Contributor."); } else toast("Could not save the note. Try again in a moment."); });
+  }
+  // "Note a street": the next tap on the map picks the nearest street and opens its card
+  function pickStreet(ll) {
+    const hit = nearest(ll.lat, ll.lng);
+    if (!hit || hit.d > 40) { toast("Tap closer to a street."); return; }
+    const k = riderKey(hit.e), name = streetLabel(hit.e), es = riderEdges().get(k) || [hit.e];
+    if (!riders.layer) riders.layer = L.layerGroup().addTo(map);
+    riders.layer.clearLayers();
+    for (const e of es) L.polyline(stepCoords({ e, f0: 0, f1: 1 }), { color: colors["--high"], weight: 8, opacity: 0.5, lineCap: "round", interactive: false }).addTo(riders.layer);
+    const c = countsOf([k]);
+    L.popup().setLatLng([hit.la, hit.lo]).setContent("<b>" + esc(name) + "</b><p>" + esc(countLine(c)) + '</p><p class="fine">A note covers the highlighted part of this street. 3 more riders on one side than the other move the route.</p>' + riderButtons([k], c.mine)).openOn(map);
+    map.once("popupclose", () => riders.layer && riders.layer.clearLayers());
+  }
+  function setPicking(on) {
+    riders.picking = on; $("notebtn").setAttribute("aria-pressed", String(on)); $("map").classList.toggle("pick", on);
+    if (on) toast("Tap a street on the map.");
+  }
+  // the card's line: which streets on this route the notes moved, and how many streets they move citywide
+  function riderLines(R) {
+    if (!riders.db && !riders.pen) return [];
+    const pref = [], avo = [];
+    for (const c of R.sum.cues) { const ks = cueKeys(c), n = ks.reduce((m, k) => Math.abs(riderNet(k)) > Math.abs(m) ? riderNet(k) : m, 0); if (n >= RIDER_MIN) pref.push(c.name); else if (n <= -RIDER_MIN) avo.push(c.name); }
+    const all = riders.sig ? riders.sig.split(",").length : 0, out = [];
+    if (state.mode === "shortest") out.push("Shortest ignores riders' notes.");
+    else if (pref.length) out.push("Riders prefer " + andList([...new Set(pref)]) + " on this route.");
+    if (avo.length && state.mode !== "shortest") out.push("Riders avoid " + andList([...new Set(avo)]) + "; this route still uses it because the way around costs more.");
+    out.push(all ? plural(all, "street stretch", "street stretches") + " citywide " + (all === 1 ? "has" : "have") + " enough riders' notes to move routes." : "No street has enough riders' notes to move routes yet (it takes 3 more on one side than the other).");
+    return out;
+  }
+  async function initRiders() {
+    if (!ARTIFACT) return;
+    let db = null, user = null;
+    try { db = await window.claude.use("db"); user = await window.claude.use("user"); } catch (e) { return; }
+    if (!db) return;
+    riders.db = db;
+    riders.uid = user ? await user.id() : null;
+    const can = user ? await user.can("data.write") : null;
+    riders.canWrite = !!riders.uid && can !== false;
+    $("note-riders").hidden = false;
+    if (riders.canWrite) $("notebtn").hidden = false;
+    db.collection("notes").onSnapshot((snap) => {
+      const bodies = [];
+      for (const d of snap.docs) { const b = d.data(); bodies.push(b); if (d.id === riders.uid && b && b.v && typeof b.v === "object") riders.mine = Object.assign({}, b.v); }
+      setTally(tallyOf(bodies));
+    }, () => {});
+  }
+
+  // ---------- stage 2: the flagged spots in route order, for the cue sheet and for the follow-me dot.
+  // Every distance here is along the drawn line (routeIndex), in feet.
+  const WARN_FT = 500, OFF_ROUTE_FT = 250;
+  function spotsOf(R) {
+    const K = R.risk; if (!K) return [];
+    const ix = K.ix, out = [], stepStart = [];
+    for (const s of ix.segs) if (stepStart[s[4]] == null) stepStart[s[4]] = s[5];
+    const stepEnd = (si) => si + 1 < stepStart.length && stepStart[si + 1] != null ? stepStart[si + 1] : ix.segs.length ? ix.segs[ix.segs.length - 1][5] + ix.segs[ix.segs.length - 1][6] : 0;
+    for (const it of K.all) {
+      let along, step;
+      if (it.kind === "junction") {
+        const q = nearRoute(ix, nLat[it.node], nLon[it.node]); if (!q) continue;
+        along = q.along; step = q.step;
+        // a junction at the joint between two steps belongs ahead of the street the route turns onto
+        if (step + 1 < R.r.steps.length && stepEnd(step) - along < 5) step++;
+      } else { step = it.steps[0]; along = stepStart[step] != null ? stepStart[step] : it.along; }
+      out.push({ it, along, cue: R.sum.stepCue[step], key: it.kind === "junction" ? "j" + it.j : "s" + R.r.steps[it.steps[0]].e });
+    }
+    return out.sort((a, b) => a.along - b.along);
+  }
+  // where a point is along the route: the nearest piece of the line, and when a previous position is known, the
+  // nearest piece close to it, so a route that doubles back on itself does not jump ahead
+  function progress(R, la, lo, prev) {
+    const ix = R.ix, k = Math.cos(la * Math.PI / 180), px = lo * k, py = la, cand = [];
+    let bestD = Infinity;
+    for (const g of ix.segs) {
+      const ax = g[1] * k, ay = g[0], bx = g[3] * k, by = g[2], dx = bx - ax, dy = by - ay, n = dx * dx + dy * dy;
+      const t = n ? Math.max(0, Math.min(1, ((px - ax) * dx + (py - ay) * dy) / n)) : 0, d = Math.hypot(px - ax - t * dx, py - ay - t * dy) * M_PER_DEG * FT_PER_M;
+      cand.push([d, g[5] + t * g[6]]); if (d < bestD) bestD = d;
+    }
+    if (!cand.length) return null;
+    // with a last position known, the closest in distance along it among the pieces within 20 ft of the closest, so a
+    // route that doubles back does not jump to its other leg; 20 ft, not more, so that just past a corner the piece
+    // left behind (whose end is a few dozen feet away) does not hold the position at the corner
+    const near = cand.filter((c) => c[0] <= bestD + 20);
+    const pick = prev == null ? near.reduce((a, c) => c[0] < a[0] ? c : a) : near.reduce((a, c) => Math.abs(c[1] - prev) < Math.abs(a[1] - prev) ? c : a);
+    return { off: pick[0], along: pick[1] };
+  }
+  // the next flagged spot ahead of a position, with its distance in feet; null when there is none
+  function upcomingAt(R, p) {
+    const spots = R.spots || (R.spots = spotsOf(R));
+    for (const s of spots) if (s.along >= p.along - 15) {
+      return { kind: s.it.kind, key: s.key, ft: Math.max(0, Math.round(s.along - p.along)), along: Math.round(p.along), off: Math.round(p.off),
+               text: sentence(s.it, "item"), say: sentence(s.it, "speak"), ahead: sentence(s.it, "ahead"), item: s.it };
+    }
+    return { kind: null, ft: null, along: Math.round(p.along), off: Math.round(p.off) };
+  }
+  function upcoming(la, lo, prev) {
+    const R = state.route; if (!R || !R.r || !R.ix) return null;
+    const p = progress(R, la, lo, prev); return p ? upcomingAt(R, p) : null;
+  }
+  // the turns in route order with their distance along the line (2026-10-09): the heading at the start, each
+  // street's turn, and the arrival at the end; keyed by the turn's point, so a turn survives a re-plan
+  function turnsOf(R) {
+    const segs = R.ix.segs, stepStart = [];
+    for (const s of segs) if (stepStart[s[4]] == null) stepStart[s[4]] = s[5];
+    const out = R.sum.cues.map((c, i) => { const si = R.sum.stepCue.indexOf(i); return { cue: i, along: stepStart[si] != null ? stepStart[si] : 0, key: "t" + c.at[0].toFixed(5) + "," + c.at[1].toFixed(5), text: c.turn + " " + c.name, say: c.turn + " " + spoken(c.name), sub: c.mi.toFixed(2) + " mi, " + G.meta.labels[c.c] }; });
+    const end = segs.length ? segs[segs.length - 1][5] + segs[segs.length - 1][6] : 0, dest = state.to && state.to.label ? state.to.label : "your destination";
+    out.push({ cue: -1, along: end, key: "arrive", text: "Arrive at " + dest, say: "Arrive at " + spoken(dest), sub: "" });
+    return out;
+  }
+  function nextTurn(R, along) { for (const t of R.turns || []) if (t.along >= along - 15) return Object.assign({ ft: Math.max(0, Math.round(t.along - along)) }, t); return null; }
+  function trailName(e) { const c = codes[G.e.c[e]]; if (c === "SW") return "Sidewalk"; const f = G.fac[G.e.f[e]]; if (OSM_CODES.has(c)) return (f || "Path") + " (OpenStreetMap)"; return f.startsWith("Trail") ? f.replace("Trail - ", "") + " trail" : f ? "Connector (" + f.toLowerCase() + ")" : "Unnamed connector"; }
+
+  // ---------- drawing: the street network as canvas tiles, the route as polylines
+  function readColors() {
+    const cs = getComputedStyle(document.documentElement);
+    ["--surface", "--ink", "--ink2", "--muted", "--line", "--high", "--medium", "--sidewalk", "--low", "--xlow", "--street", "--route-case", "--sw", "--trail"].forEach((k) => colors[k] = cs.getPropertyValue(k).trim());
+  }
+  const StreetLayer = L.GridLayer.extend({
+    createTile(coords) {
+      const tile = document.createElement("canvas"), size = this.getTileSize().x, dpr = Math.min(2, window.devicePixelRatio || 1);
+      tile.width = size * dpr; tile.height = size * dpr; tile.style.width = tile.style.height = size + "px";
+      const ctx = tile.getContext("2d"); ctx.scale(dpr, dpr);
+      drawTile(ctx, coords, size);
+      return tile;
+    }
+  });
+  function drawTile(ctx, coords, size) {
+    const z = coords.z, sc = Math.pow(2, z), tx = coords.x * size, ty = coords.y * size;
+    const nw = unmerc(tx / sc, ty / sc), se = unmerc((tx + size) / sc, (ty + size) / sc), pad = 0.002;
+    const E = G.e, buckets = []; for (let c = 0; c < 10; c++) buckets.push([]);
+    const all = z >= 13;
+    edgesInBox(se[0] - pad, nw[1] - pad, nw[0] + pad, se[1] + pad, (e) => { const c = CLASS[codes[E.c[e]]]; if (c === 8 ? z >= 14 : c === 9 ? all : all || c < 6 || c === 7) buckets[c].push(e); });
+    const lw = z <= 11 ? 1 : z === 12 ? 1.3 : z === 13 ? 1.6 : z === 14 ? 2 : z === 15 ? 2.6 : 3.4;
+    ctx.lineCap = "round"; ctx.lineJoin = "round";
+    const path = (list) => { ctx.beginPath(); for (const e of list) { ctx.moveTo(pX[off[e]] * sc - tx, pY[off[e]] * sc - ty); for (let i = off[e] + 1; i < off[e + 1]; i++) ctx.lineTo(pX[i] * sc - tx, pY[i] * sc - ty); } ctx.stroke(); };
+    for (const c of [6, 7, 8, 9, 2, 3, 1, 0, 4, 5]) {
+      if (!buckets[c].length) continue;
+      ctx.strokeStyle = colors[TOKEN[c]];
+      ctx.globalAlpha = c === 6 ? (hasTiles ? 0.35 : 0.9) : c === 7 ? (hasTiles ? 0.45 : 0.9) : hasTiles ? 0.85 : 1;
+      ctx.lineWidth = c === 6 || c === 7 || c === 8 ? lw * 0.65 : c === 2 || c === 9 ? lw * 0.8 : lw;
+      ctx.setLineDash(c === 1 ? [6, 4] : c === 8 ? [3, 3] : c === 9 ? [5, 4] : []);
+      path(buckets[c]);
+    }
+    ctx.setLineDash([]); ctx.globalAlpha = 1;
+    if (!hasTiles && z >= 14) drawLabels(ctx, buckets, sc, tx, ty, size, z);
+  }
+  function drawLabels(ctx, buckets, sc, tx, ty, size, z) {
+    ctx.font = "600 11px Overpass, system-ui, sans-serif"; ctx.textAlign = "center"; ctx.textBaseline = "middle";
+    const used = new Set(); let n = 0;
+    const order = z >= 16 ? [0, 1, 2, 3, 4, 5, 9, 7, 6] : z >= 15 ? [0, 1, 2, 3, 4, 5, 9, 7, 6] : [0, 1, 2, 3, 4, 5, 7];
+    for (const c of order) for (const e of buckets[c]) {
+      if (n >= 60) return;
+      const name = G.names[G.e.n[e]]; if (!name) continue;
+      const i0 = off[e], i1 = off[e + 1] - 1;
+      const ax = pX[i0] * sc - tx, ay = pY[i0] * sc - ty, bx = pX[i1] * sc - tx, by = pY[i1] * sc - ty;
+      const len = Math.hypot(bx - ax, by - ay), tw = ctx.measureText(name).width; if (len < tw + 20) continue;
+      const mx = (ax + bx) / 2, my = (ay + by) / 2;
+      if (mx < tw / 2 + 4 || my < 8 || mx > size - tw / 2 - 4 || my > size - 8) continue;
+      const key = name + "|" + Math.floor(mx / 180) + "," + Math.floor(my / 120), spot = Math.floor(mx / 60) + "," + Math.floor(my / 20);
+      if (used.has(key) || used.has(spot)) continue; used.add(key); used.add(spot); n++;
+      let ang = Math.atan2(by - ay, bx - ax); if (ang > Math.PI / 2 || ang < -Math.PI / 2) ang += Math.PI;
+      ctx.save(); ctx.translate(mx, my); ctx.rotate(ang);
+      ctx.lineWidth = 3.5; ctx.strokeStyle = colors["--surface"]; ctx.strokeText(name, 0, 0);
+      ctx.fillStyle = colors["--ink2"]; ctx.fillText(name, 0, 0); ctx.restore();
+    }
+  }
+  function drawRoute() {
+    routeLayer.clearLayers();
+    drawAvoided();
+    const K = state.route && state.route.risk;
+    $("key-hatch").hidden = !(K && K.all.some((it) => it.kind === "stretch"));
+    if (!state.route || !state.route.r) return;
+    const E = G.e, lines = [], steps = state.route.r.steps;
+    for (const st of steps) lines.push({ c: codes[E.c[st.e]], pts: stepCoords(st) });
+    if (K) for (const it of K.all) if (it.kind === "stretch")   // red hatched casing under the line, tappable
+      for (const si of it.steps) L.polyline(stepCoords(steps[si]), { color: colors["--low"], weight: 19, opacity: 0.95, dashArray: "3 4", lineCap: "butt", lineJoin: "round", bubblingMouseEvents: false })
+        .bindPopup(() => cardOf(it)).addTo(routeLayer);
+    for (const l of lines) L.polyline(l.pts, { color: colors["--route-case"], weight: 9, opacity: 0.9, lineCap: "round", interactive: false }).addTo(routeLayer);
+    for (const l of lines) L.polyline(l.pts, { color: colors[TOKEN[CLASS[l.c]]] === colors["--street"] ? colors["--surface"] : colors[TOKEN[CLASS[l.c]]], weight: 5, opacity: 1, lineCap: "round", dashArray: CLASS[l.c] === 1 || CLASS[l.c] === 9 ? "8 6" : CLASS[l.c] === 8 ? "4 5" : null, interactive: false }).addTo(routeLayer);
+    if (!K) return;
+    for (const i of K.crashes) L.circleMarker([cLat[i], cLon[i]], { radius: G.crash.sev[i] ? 4 : 3, color: colors["--surface"], weight: 1, fillColor: colors["--low"], fillOpacity: 1, interactive: false }).addTo(routeLayer);
+    for (const it of K.all) if (it.kind === "junction" && !isAvoided(it.tok))
+      L.marker([nLat[it.node], nLon[it.node]], { icon: L.divIcon({ className: "", html: '<div class="ring" title="' + esc(sentence(it, "item")) + '">' + G.jx.c21[it.j] + "</div>", iconSize: [0, 0], iconAnchor: [0, 0] }), keyboard: false, zIndexOffset: 800 })
+        .bindPopup(() => cardOf(it)).addTo(routeLayer);
+  }
+  // the spots the rider chose to route around, crossed out: the junction's ring struck through, the stretch's streets
+  // dashed with a struck ring at its middle; tap for the card and "Stop avoiding this"
+  function drawAvoided() {
+    if (!RISK) return;
+    for (const sp of state.avoid.map(parseTok).filter(Boolean)) {
+      const it = sp.kind === "junction" ? { kind: "junction", j: sp.j, node: sp.node, tok: sp.tok } : null;
+      const card = () => it ? cardOf(it) : "<b>Exposed stretch, avoided</b><p>" + esc(sp.name) + "</p>" + (state.from && state.to ? '<button class="btn" type="button" data-unavoid="' + sp.tok + '">Stop avoiding this</button>' : "");
+      let at;
+      if (it) at = [nLat[sp.node], nLon[sp.node]];
+      else {
+        const pts = sp.edges.map((e) => stepCoords({ e, f0: 0, f1: 1 }));
+        for (const p of pts) L.polyline(p, { color: colors["--low"], weight: 4, opacity: 0.9, dashArray: "2 7", lineCap: "round", bubblingMouseEvents: false }).bindPopup(card).addTo(routeLayer);
+        const mid = pts[Math.floor(pts.length / 2)]; at = mid[Math.floor(mid.length / 2)];
+      }
+      L.marker(at, { icon: L.divIcon({ className: "", html: '<div class="ring avoided' + (it ? "" : " small") + '" title="Avoided: ' + esc(sp.name) + '">' + (it ? G.jx.c21[sp.j] : "") + "</div>", iconSize: [0, 0], iconAnchor: [0, 0] }), keyboard: false, zIndexOffset: 900 })
+        .bindPopup(card).addTo(routeLayer);
+    }
+  }
+  // high-crash junctions city-wide as small rings from zoom 14, so they show while planning
+  function drawHotLayer() {
+    if (!RISK) return;
+    if (hotLayer) map.removeLayer(hotLayer);
+    hotLayer = L.layerGroup();
+    G.jx.n.forEach((nd, j) => {
+      if (!G.jx.hot[j]) return;
+      const it = { kind: "junction", j, node: nd, tok: "j" + j.toString(36) };
+      L.marker([nLat[nd], nLon[nd]], { icon: L.divIcon({ className: "", html: '<div class="ring small" title="' + esc(sentence(it, "item")) + '"></div>', iconSize: [0, 0], iconAnchor: [0, 0] }), keyboard: false })
+        .bindPopup(() => cardOf(it)).addTo(hotLayer);
+    });
+    showHot();
+  }
+  function showHot() {
+    if (!hotLayer) return;
+    const on = map.getZoom() >= 14;
+    if (on && !map.hasLayer(hotLayer)) hotLayer.addTo(map); else if (!on && map.hasLayer(hotLayer)) map.removeLayer(hotLayer);
+    $("key-ring").hidden = !on;
+  }
+  function pinIcon(label) { return L.divIcon({ className: "", html: '<div class="pin"><b>' + label + "</b></div>", iconSize: [0, 0], iconAnchor: [0, 0] }); }
+  function setPin(which, la, lo) {
+    if (pins[which]) { pins[which].setLatLng([la, lo]); return; }
+    const m = L.marker([la, lo], { icon: pinIcon(which === "from" ? "A" : "B"), draggable: true, keyboard: false, zIndexOffset: 1000 }).addTo(map);
+    m.on("dragend", () => { const p = m.getLatLng(); setPoint(which, p.lat, p.lng, null, true); });
+    pins[which] = m;
+  }
+
+  // ---------- state
+  function setPoint(which, la, lo, label, fromMap) {
+    state[which] = { la, lo, label: label || "" };
+    const input = $(which);
+    input.value = label || (la.toFixed(5) + ", " + lo.toFixed(5));
+    $(which + "-x").hidden = false;
+    hideHits(which);
+    setPin(which, la, lo);
+    if (which === "from" && !state.to) $("to").focus();
+    route();
+  }
+  function clearPoint(which) {
+    state[which] = null; $(which).value = ""; $(which + "-x").hidden = true;
+    if (pins[which]) { map.removeLayer(pins[which]); pins[which] = null; }
+    state.route = null; state.shortest = null; drawRoute(); render(); writeHash();
+  }
+  function route() {
+    if (!state.from || !state.to) { state.route = null; render(); return; }
+    const S = nearest(state.from.la, state.from.lo), T = nearest(state.to.la, state.to.lo);
+    if (!S || !T) { state.route = { err: "That point is more than a mile from any street in the city's file." }; drawRoute(); render(); return; }
+    const t0 = performance.now(), w = WEIGHT[state.mode], tx = state.mode === "trails" ? TRAILS.x : 1;
+    // stage 3: the citywide set under "Avoid hotspots", plus the spots the rider chose to route around
+    const glob = state.mode === "hotspots" ? hotAvoid() : null, spots = state.avoid.map(parseTok).filter(Boolean);
+    const r = plan(S, T, w, avoidSets(spots, glob), tx), planMs = performance.now() - t0;
+    if (!r) { state.route = { err: "No connected route between those points in the street file." }; drawRoute(); render(); return; }
+    const sum = summarize(r);
+    let sh = null, shSum = null, rs = null;
+    if (state.mode !== "shortest") { rs = plan(S, T, 0); if (rs) { shSum = summarize(rs); sh = shSum.total; } }
+    state.route = { r, sum, S, T, ms: performance.now() - t0, planMs, shortest: sh };
+    state.route.risk = riskOf(r, sum); state.route.shortRisk = rs ? riskOf(rs, shSum) : null;
+    state.route.ix = state.route.risk ? state.route.risk.ix : routeIndex(r);   // the line with distances along it, for following
+    if (spots.length || glob) {
+      const A = state.route.avoid = { spots: [], hot: null, detourMi: 0 }, used = routeUses(r);
+      if (spots.length) {   // the same plan without the chosen spots, for the detour in miles
+        const rb = plan(S, T, w, avoidSets([], glob)), ub = rb ? routeUses(rb) : null;
+        if (rb) A.detourMi = sum.total - summarize(rb).total;
+        for (const sp of spots) { const on = passes(used, sp), was = ub ? passes(ub, sp) : false; A.spots.push(Object.assign({}, sp, { failed: on, around: was && !on })); }
+      }
+      if (glob && state.route.risk) {   // what "Avoid hotspots" got around, against the plain comfort route
+        const rc = plan(S, T, WEIGHT.comfort, avoidSets(spots, null));
+        if (rc) {
+          const cs = summarize(rc), ck = riskOf(rc, cs), key = (it) => it.kind === "junction" ? "j" + it.j : "s" + it.name;
+          const now = new Set(state.route.risk.all.map(key)), gone = ck ? ck.all.filter((it) => !now.has(key(it))) : [];
+          A.hot = { of: ck ? ck.all.length : 0, n: gone.length, junctions: gone.filter((it) => it.kind === "junction").length, stretches: gone.filter((it) => it.kind === "stretch").length,
+                    hotBefore: ck ? ck.hot : 0, hotAfter: state.route.risk.hot, addMi: sum.total - cs.total, comfortMi: cs.total, expBefore: expMi(rc), expAfter: expMi(r) };
+        }
+      }
+    }
+    if (state.mode === "trails") {   // what Trails first bought, against the plain comfort route
+      const rc = plan(S, T, WEIGHT.comfort, avoidSets(spots, null));
+      if (rc) { const cs = summarize(rc); state.route.trailsVs = { comfortMi: cs.total, comfortTrailMi: trailMiles(cs), trailMi: trailMiles(sum) }; }
+    }
+    state.route.spots = spotsOf(state.route); state.route.turns = turnsOf(state.route); ride.along = null;
+    drawRoute(); render(); writeHash();
+    try { localStorage.setItem("abcr.last", JSON.stringify({ from: state.from, to: state.to, mode: state.mode, avoid: state.avoid })); } catch (e) {}
+  }
+  function render() {
+    const R = state.route, res = $("result"), hint = $("hint");
+    if (!R) { res.hidden = true; hint.hidden = false; hint.className = "hint"; hint.textContent = state.from ? "Now the end: tap the map or type a place." : "Tap the map to drop the start, then the end. Drag a pin to move it."; return; }
+    if (R.err) { res.hidden = true; hint.hidden = false; hint.className = "hint err"; hint.textContent = R.err; return; }
+    hint.hidden = true; res.hidden = false;
+    const { sum } = R, E = G.e;
+    $("miles").textContent = sum.total.toFixed(1) + " mi";
+    const far = R.S.d > 60 ? " Start is " + Math.round(R.S.d * FT_PER_M) + " ft from the nearest street." : "", farT = R.T.d > 60 ? " End is " + Math.round(R.T.d * FT_PER_M) + " ft from the nearest street." : "";
+    $("vs").textContent = (R.shortest != null && sum.total > R.shortest + 0.04 ? "+" + (sum.total - R.shortest).toFixed(1) + " mi (" + Math.round(100 * (sum.total / R.shortest - 1)) + "%) over the shortest way." : R.shortest != null ? "The shortest way too." : "Shortest, ratings ignored.") + far + farT;
+    const g = new Array(GROUP_LABEL.length).fill(0); for (let c = 0; c < codes.length; c++) g[GROUP[codes[c]]] += sum.miles[c];
+    $("bar").innerHTML = g.map((v, i) => v > 0 ? '<i' + (i === 6 ? ' class="dashed"' : "") + ' style="--c:var(' + GROUP_TOKEN[i] + ");width:" + (100 * v / sum.total).toFixed(1) + '%"></i>' : "").join("");
+    $("shares").innerHTML = g.map((v, i) => v > 0 ? '<span style="--c:var(' + GROUP_TOKEN[i] + ')">' + Math.round(100 * v / sum.total) + "% " + GROUP_LABEL[i] + "</span>" : "").join("");
+    const bad = sum.cues.filter((c) => BAD.has(codes[c.c]) && c.mi >= 0.03), badMi = bad.reduce((s, c) => s + c.mi, 0);
+    $("warn").innerHTML = bad.length
+      ? '<div class="warn"><b>' + badMi.toFixed(1) + " mi on streets rated Low or unrated big roads:</b> " + bad.map((c) => esc(c.name) + " (" + c.mi.toFixed(1) + " mi, " + G.meta.labels[c.c].toLowerCase() + ")").join(", ") + "</div>"
+      : '<div class="warn ok"><b>No stretch rated Low.</b> ' + (g[2] > 0.05 ? g[2].toFixed(1) + " mi is on local streets the city has not rated." : "") + "</div>";
+    const swMi = SWC >= 0 ? sum.miles[SWC] : 0;
+    if (swMi >= 0.01) $("warn").innerHTML += '<div class="warn walk">' + esc(sentence({ kind: "sidewalks", mi: swMi }, "item")) + "</div>";
+    const K = R.risk;
+    $("watch").innerHTML = K ? '<div class="watch"><h3>Watch out</h3>' + (K.shown.length
+        ? "<ol>" + K.shown.map((it, i) => '<li data-w="' + i + '">' + esc(sentence(it, "item")) + "</li>").join("") + "</ol>" + (K.more ? '<p class="note">' + K.more + " more marked on the map.</p>" : "")
+        : "<p>No high-crash intersection or exposed stretch on this route.</p>") +
+      '<p class="tot">' + esc(sentence({ kind: "totals", here: K, short: R.shortRisk }, "item")) + "</p></div>" : "";
+    const lines = avoidLines(R), mine = R.avoid ? R.avoid.spots : [];
+    $("avoid").innerHTML = lines.length ? '<div class="watch avoid"><h3>' + (state.mode === "hotspots" ? "Avoid hotspots" : "Routing around") + "</h3>" + lines.map((l) => "<p>" + esc(l) + "</p>").join("") +
+      (mine.length ? "<ul>" + mine.map((sp) => "<li><s>" + esc(sp.name) + '</s><button class="linkbtn" type="button" data-unavoid="' + sp.tok + '">Stop avoiding</button></li>').join("") + "</ul>" : "") + "</div>" : "";
+    $("trails").innerHTML = trailLines(R);
+    const rl = riderLines(R);
+    $("riders").innerHTML = rl.length ? '<div class="watch riders-card"><h3>Riders\' notes</h3>' + rl.map((l) => "<p>" + esc(l) + "</p>").join("") + "</div>" : "";
+    // each flagged spot gets its own row just ahead of the street it is on (stage 2)
+    const before = new Map(); (R.spots || []).forEach((s, k) => { if (!before.has(s.cue)) before.set(s.cue, []); before.get(s.cue).push(k); });
+    $("cues").innerHTML = sum.cues.map((c, i) => (before.get(i) || []).map((k) => '<li class="ahead" data-s="' + k + '"><span class="nm">' + esc(sentence(R.spots[k].it, "ahead")) + "</span></li>").join("") + '<li data-i="' + i + '"><span class="nm"><span class="turn">' + esc(c.turn) + "</span> " + esc(c.name) + '</span><span class="mi">' + c.mi.toFixed(2) + ' mi</span><span class="sub"><i class="chip" style="--c:var(' + TOKEN[CLASS[codes[c.c]]] + ')"></i>' + (codes[c.c] === "SW" ? esc(sentence({ kind: "sidewalk", mi: c.mi, along: c.name.replace(/^Sidewalk along /, "") }, "item")) : G.meta.labels[c.c] + (c.fac && !c.fac.startsWith("Trail") ? " &middot; " + esc(c.fac) : "")) + "</span>" +
+      (K ? '<span class="sub2' + (c.expFt > MIN_STRETCH_FT ? " x" : "") + '">' + esc(sentence(Object.assign({ kind: "cue" }, c), "item")) + "</span>" : "") +
+      (riders.db ? (() => { const ks = cueKeys(c), n = countsOf(ks); return '<span class="riders">' + esc(countLine(n)) + riderButtons(ks, n.mine) + "</span>"; })() : "") + "</li>").join("");
+    const coords = []; for (const st of R.r.steps) for (const p of stepCoords(st)) { const l = coords[coords.length - 1]; if (!l || l[0] !== p[0] || l[1] !== p[1]) coords.push(p); }
+    R.coords = coords;
+    const wps = waypointsBy(R, 9, WAYPOINT_STRATEGY);
+    $("gmaps").href = "https://www.google.com/maps/dir/?api=1&origin=" + coords[0][0].toFixed(5) + "," + coords[0][1].toFixed(5) + "&destination=" + coords[coords.length - 1][0].toFixed(5) + "," + coords[coords.length - 1][1].toFixed(5) + "&travelmode=bicycling" + (wps.length ? "&waypoints=" + wps.map((p) => p[0].toFixed(5) + "," + p[1].toFixed(5)).join("%7C") : "");
+    $("gnote").textContent = "Google gets the ends and " + wps.length + " points along this line and draws its own bike route between them; check it against the line here. GPX carries the exact line for Komoot or Ride with GPS." + (ARTIFACT ? " The GPX saves inside a zip here." : "");
+    $("share").hidden = false;
+  }
+  function esc(s) { return String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])); }
+  // the card's trails block: under Trails first, what the setting bought against the comfort route; elsewhere one line
+  function trailLines(R) {
+    const tm = trailMiles(R.sum), pct = (m) => Math.round(100 * m / R.sum.total) + "%", mi = (m) => m.toFixed(m < 0.1 ? 2 : 1) + " mi";
+    if (state.mode !== "trails" || !R.trailsVs) return tm >= 0.01 ? '<p class="note">' + esc(mi(tm) + " (" + pct(tm) + ") on trails and paths.") + "</p>" : "";
+    const V = R.trailsVs, same = Math.abs(V.comfortMi - R.sum.total) < 0.005 && Math.abs(V.comfortTrailMi - tm) < 0.005;
+    const line = same ? "The same route as Comfort first: " + mi(tm) + " (" + pct(tm) + ") on trails and paths; nothing nearby to gain."
+      : mi(tm) + " (" + pct(tm) + ") on trails and paths, against " + mi(V.comfortTrailMi) + " (" + Math.round(100 * V.comfortTrailMi / V.comfortMi) + "%) on the comfort route; " + signedMi(R.sum.total - V.comfortMi) + " over it.";
+    return '<div class="watch trails-card"><h3>Trails first</h3><p>' + esc(line) + "</p></div>";
+  }
+  // the points handed to Google: "corners" (the default; Douglas-Peucker rank), "trails" (where the route enters or leaves a
+  // trail or path, in route order, then corners), "even" (evenly spaced along the line). Step 5 of the trails-and-google
+  // handoff scores the three against Google; the batch script asks for them by name
+  const WAYPOINT_STRATEGY = "corners";
+  function waypointsBy(R, max, strategy) {
+    const pts = R.coords;
+    if (strategy === "even") {
+      const cum = [0]; for (let i = 1; i < pts.length; i++) cum.push(cum[i - 1] + distFt(pts[i - 1][0], pts[i - 1][1], pts[i][0], pts[i][1]));
+      const out = []; let j = 0;
+      for (let i = 1; i <= max; i++) { const want = i * cum[cum.length - 1] / (max + 1); while (j < pts.length - 1 && cum[j] < want) j++; out.push(pts[j]); }
+      return out;
+    }
+    if (strategy === "trails") {
+      const cues = R.sum.cues, out = [], key = (p) => p[0] + "," + p[1];
+      for (let i = 1; i < cues.length && out.length < max; i++) if (TRAILS.codes.has(codes[cues[i - 1].c]) !== TRAILS.codes.has(codes[cues[i].c])) out.push(cues[i].at);
+      const seen = new Set(out.map(key));
+      for (const p of waypoints(pts, max)) { if (out.length >= max) break; if (!seen.has(key(p))) { seen.add(key(p)); out.push(p); } }
+      const pos = new Map(); pts.forEach((p, i) => { if (!pos.has(key(p))) pos.set(key(p), i); });
+      return out.sort((p, q) => (pos.get(key(p)) || 0) - (pos.get(key(q)) || 0));
+    }
+    return waypoints(pts, max);
+  }
+  // the interior points that keep the line's shape best: the route's corners, by Douglas-Peucker rank
+  function waypoints(pts, max) {
+    if (pts.length < 3) return [];
+    const k = Math.cos(pts[0][0] * Math.PI / 180), chosen = [0, pts.length - 1];
+    const dev = (i, a, b) => { const ax = pts[a][1] * k, ay = pts[a][0], bx = pts[b][1] * k, by = pts[b][0], px = pts[i][1] * k, py = pts[i][0], dx = bx - ax, dy = by - ay, n = dx * dx + dy * dy, t = n ? Math.max(0, Math.min(1, ((px - ax) * dx + (py - ay) * dy) / n)) : 0; return Math.hypot(px - ax - t * dx, py - ay - t * dy); };
+    while (chosen.length - 2 < max) {
+      let best = 0, bi = -1;
+      for (let s = 0; s < chosen.length - 1; s++) for (let i = chosen[s] + 1; i < chosen[s + 1]; i++) { const d = dev(i, chosen[s], chosen[s + 1]); if (d > best) { best = d; bi = i; } }
+      if (bi < 0 || best * M_PER_DEG < 25) break;
+      chosen.push(bi); chosen.sort((a, b) => a - b);
+    }
+    return chosen.slice(1, -1).map((i) => pts[i]);
+  }
+  function gpx() {
+    const R = state.route, name = (state.from.label || "Start") + " to " + (state.to.label || "End");
+    const pt = (p) => 'lat="' + p[0].toFixed(6) + '" lon="' + p[1].toFixed(6) + '"';
+    const osm = G.meta.osm && G.meta.osm.edges ? " Paths: OpenStreetMap contributors, ODbL." : "";
+    return '<?xml version="1.0" encoding="UTF-8"?>\n<gpx version="1.1" creator="Austin Bike Comfort Routes" xmlns="http://www.topografix.com/GPX/1/1">\n<metadata><name>' + esc(name) + "</name><desc>" + R.sum.total.toFixed(2) + " mi, " + state.mode + " setting. Streets and ratings: City of Austin." + osm + "</desc></metadata>\n" +
+      "<wpt " + pt(R.coords[0]) + "><name>" + esc(state.from.label || "Start") + "</name></wpt>\n<wpt " + pt(R.coords[R.coords.length - 1]) + "><name>" + esc(state.to.label || "End") + "</name></wpt>\n" +
+      // the turns as a route, one point per street, for apps that read rte; the exact line follows as the track
+      "<rte><name>" + esc(name) + "</name>\n" + R.sum.cues.map((c) => "<rtept " + pt(c.at) + "><name>" + esc(c.turn + " " + c.name) + "</name><desc>" + esc(c.mi.toFixed(2) + " mi, " + G.meta.labels[c.c]) + "</desc></rtept>").join("\n") +
+      "\n<rtept " + pt(R.coords[R.coords.length - 1]) + "><name>Arrive at " + esc(state.to.label || "End") + "</name></rtept>\n</rte>\n" +
+      "<trk><name>" + esc(name) + "</name><trkseg>\n" + R.coords.map((p) => "<trkpt " + pt(p) + "/>").join("\n") + "\n</trkseg></trk>\n</gpx>\n";
+  }
+  // a stored (uncompressed) zip holding one file: the only way a page can hand the viewer a .gpx here
+  function zipOne(name, text) {
+    const enc = new TextEncoder(), data = enc.encode(text), nm = enc.encode(name);
+    let tbl = zipOne.tbl; if (!tbl) { tbl = zipOne.tbl = new Int32Array(256); for (let i = 0; i < 256; i++) { let c = i; for (let j = 0; j < 8; j++) c = c & 1 ? 0xEDB88320 ^ (c >>> 1) : c >>> 1; tbl[i] = c; } }
+    let crc = -1; for (let i = 0; i < data.length; i++) crc = tbl[(crc ^ data[i]) & 255] ^ (crc >>> 8); crc = (crc ^ -1) >>> 0;
+    const local = new Uint8Array(30 + nm.length), central = new Uint8Array(46 + nm.length), end = new Uint8Array(22);
+    const dv = (u) => new DataView(u.buffer);
+    const L = dv(local); L.setUint32(0, 0x04034b50, true); L.setUint16(4, 20, true); L.setUint16(8, 0, true); L.setUint16(10, 0, true); L.setUint16(12, 0x21, true); L.setUint32(14, crc, true); L.setUint32(18, data.length, true); L.setUint32(22, data.length, true); L.setUint16(26, nm.length, true); local.set(nm, 30);
+    const C = dv(central); C.setUint32(0, 0x02014b50, true); C.setUint16(4, 20, true); C.setUint16(6, 20, true); C.setUint16(12, 0x21, true); C.setUint32(16, crc, true); C.setUint32(20, data.length, true); C.setUint32(24, data.length, true); C.setUint16(28, nm.length, true); central.set(nm, 46);
+    const off2 = local.length + data.length, Ed = dv(end); Ed.setUint32(0, 0x06054b50, true); Ed.setUint16(8, 1, true); Ed.setUint16(10, 1, true); Ed.setUint32(12, central.length, true); Ed.setUint32(16, off2, true);
+    return new Blob([local, data, central, end], { type: "application/zip" });
+  }
+  async function saveGpx() {
+    if (!state.route || !state.route.coords) return;
+    const text = gpx(), base = "austin-bike-route";
+    if (ARTIFACT) {
+      const dl = await window.claude.use("downloads");
+      if (!dl) { toast("Saving files is not available in this view."); return; }
+      try { await dl.save({ filename: base + ".zip", data: zipOne(base + ".gpx", text) }); toast("Saved. Unzip it to get the .gpx."); }
+      catch (e) { if (e && e.code !== "declined") toast("Could not save: " + (e.message || e.code || e)); }
+      return;
+    }
+    const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([text], { type: "application/gpx+xml" })); a.download = gpxName(); document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+  }
+  // outside the artifact the file is named after the endpoints when both have labels ("zilker-park-to-ut-tower.gpx")
+  function gpxName() {
+    const slug = (s) => String(s || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 40).replace(/-+$/, "");
+    const f = slug(state.from && state.from.label), t = slug(state.to && state.to.label);
+    return (f && t ? f + "-to-" + t : "austin-bike-route") + ".gpx";
+  }
+  // "Send to app": the share sheet with the .gpx attached (shown only where the browser can share a file of this type)
+  function gpxFile() { return new File([gpx()], gpxName(), { type: "application/gpx+xml" }); }
+  function canSendGpx() {
+    if (ARTIFACT || !navigator.share || !navigator.canShare || typeof File !== "function") return false;
+    try { return navigator.canShare({ files: [new File([""], "route.gpx", { type: "application/gpx+xml" })] }); } catch (e) { return false; }
+  }
+  function sendGpx() {
+    if (!state.route || !state.route.coords) return;
+    const f = gpxFile();
+    navigator.share({ files: [f], title: f.name.replace(/\.gpx$/, "") }).catch((e) => { if (!e || e.name !== "AbortError") toast("Could not share: " + ((e && e.message) || e)); });
+  }
+  function toast(msg) { const t = $("toast"); t.textContent = msg; t.hidden = false; clearTimeout(toast.h); toast.h = setTimeout(() => t.hidden = true, 2600); }
+  function writeHash() {
+    // "#r_" start, end, setting, then the avoided spots joined by "~" (only letters, digits, "." "_" "~" "-" in the hash)
+    const h = state.from && state.to ? "#r_" + [state.from.la.toFixed(5), state.from.lo.toFixed(5), state.to.la.toFixed(5), state.to.lo.toFixed(5), Object.keys(WEIGHT).indexOf(state.mode)].join("_") + (state.avoid.length ? "_" + state.avoid.join("~") : "") : "";
+    try { history.replaceState(null, "", location.pathname + location.search + h); } catch (e) {}
+  }
+  function readHash() {
+    const m = /^#r_(-?[\d.]+)_(-?[\d.]+)_(-?[\d.]+)_(-?[\d.]+)_(\d)(?:_([0-9a-z~-]+))?$/.exec(location.hash || "");
+    if (!m) return false;
+    state.avoid = m[6] ? m[6].split("~").filter((t) => parseTok(t)) : [];
+    state.mode = Object.keys(WEIGHT)[+m[5]] || "comfort"; setMode(state.mode, true);
+    setPoint("from", +m[1], +m[2]); setPoint("to", +m[3], +m[4]);
+    return true;
+  }
+  function setMode(v, quiet) {
+    state.mode = v;
+    for (const b of $("mode").querySelectorAll("button")) b.setAttribute("aria-pressed", String(b.dataset.v === v));
+    if (!quiet) route();
+  }
+
+  // ---------- search: the city's street file (addresses by house-number range, streets, intersections),
+  // the swim and hiking places, and, outside the artifact viewer, OpenStreetMap's Photon
+  function matchNames(qTok) {
+    const out = [];
+    if (!qTok.length) return out;
+    for (let i = 1; i < nameTok.length; i++) {
+      const nt = nameTok[i]; if (nt.length < qTok.length) continue;
+      let ok = true, extra = nt.length - qTok.length;
+      for (let j = 0; j < qTok.length && ok; j++) {
+        const q = qTok[j], last = j === qTok.length - 1;
+        ok = nt.some((t) => t === q || (last && t.startsWith(q)));
+      }
+      if (ok) out.push({ i, score: extra + (nt[0] === qTok[0] ? 0 : 0.5) });
+    }
+    out.sort((a, b) => a.score - b.score);
+    return out;
+  }
+  function pointOn(e, frac) { const cum = edgeCum(e); return stepCoords({ e, f0: Math.max(0, Math.min(1, frac)), f1: Math.max(0, Math.min(1, frac)) })[0]; }
+  function locateNumber(num, i) {
+    let best = null;
+    for (const e of nameEdges[i]) {
+      const a = addrOf.get(e); if (!a) continue;
+      for (const [f, t] of [[a[0], a[1]], [a[2], a[3]]]) {
+        if (!f && !t) continue;
+        const lo = Math.min(f, t), hi = Math.max(f, t), inside = num >= lo && num <= hi, parity = num % 2 === f % 2;
+        const score = (inside ? 0 : Math.min(Math.abs(num - lo), Math.abs(num - hi))) * 10 + (parity ? 0 : 1);
+        if (!best || score < best.score) best = { score, e, frac: hi === lo ? 0.5 : (num - f) / (t - f), inside };
+      }
+    }
+    return best;
+  }
+  function geocodeLocal(q) {
+    const hits = [], nq = norm(q), center = map ? map.getCenter() : { lat: 30.27, lng: -97.74 };
+    if (!nq) return hits;
+    const mNum = /^(\d+)\s+(.+)$/.exec(nq);
+    if (mNum) {
+      const num = +mNum[1];
+      for (const m of matchNames(mNum[2].split(" ")).slice(0, 6)) {
+        const loc = locateNumber(num, m.i); if (!loc) continue;
+        const p = pointOn(loc.e, loc.frac);
+        hits.push({ label: num + " " + G.names[m.i], sub: loc.inside ? "Address, placed along the block" : "Nearest block on file for that street", la: p[0], lo: p[1] });
+        if (hits.length >= 4) break;
+      }
+    }
+    const parts = nq.split(/ AND | AT |\//).map((s) => s.trim()).filter(Boolean);
+    if (parts.length === 2) {
+      const A = matchNames(parts[0].split(" ")).slice(0, 8), B = matchNames(parts[1].split(" ")).slice(0, 8);
+      outer: for (const a of A) {
+        const nodesA = new Set(); for (const e of nameEdges[a.i]) { nodesA.add(G.e.a[e]); nodesA.add(G.e.b[e]); }
+        for (const b of B) { if (a.i === b.i) continue; for (const e of nameEdges[b.i]) for (const n of [G.e.a[e], G.e.b[e]]) if (nodesA.has(n)) { hits.push({ label: G.names[a.i] + " & " + G.names[b.i], sub: "Intersection", la: nLat[n], lo: nLon[n] }); if (hits.length >= 6) break outer; continue outer; } }
+      }
+    }
+    const qt = nq.split(" ");
+    for (let i = 0; i < placeTok.length && hits.length < 8; i++) {
+      const pt = placeTok[i];
+      if (qt.every((q, j) => pt.some((t) => t === q || (j === qt.length - 1 && t.startsWith(q))))) { const p = G.places[i]; hits.push({ label: p.n, sub: (p.t === "swim" ? "Swimming hole" : "Hiking spot") + (p.approx ? ", approximate point" : ""), la: p.la, lo: p.lo }); }
+    }
+    if (!mNum) for (const m of matchNames(qt).slice(0, 5)) {
+      let be = -1, bd = Infinity; for (const e of nameEdges[m.i]) { const d = distFt(nLat[G.e.a[e]], nLon[G.e.a[e]], center.lat, center.lng); if (d < bd) { bd = d; be = e; } }
+      if (be >= 0) { const p = pointOn(be, 0.5); hits.push({ label: G.names[m.i], sub: "Street, nearest block to the map's center", la: p[0], lo: p[1] }); }
+    }
+    return hits.slice(0, 8);
+  }
+  async function geocodeRemote(q, signal) {
+    if (ARTIFACT || q.length < 3) return [];
+    try {
+      const r = await fetch("https://photon.komoot.io/api/?q=" + encodeURIComponent(q + " Austin") + "&limit=4&bbox=-98.3,29.9,-97.3,30.8&lang=en", { signal });
+      const j = await r.json();
+      return (j.features || []).map((f) => { const p = f.properties, label = p.name || [p.housenumber, p.street].filter(Boolean).join(" ") || p.city; return { label, sub: [p.street && p.name ? p.street : null, p.city, "OpenStreetMap"].filter(Boolean).join(", "), la: f.geometry.coordinates[1], lo: f.geometry.coordinates[0] }; }).filter((h) => h.label);
+    } catch (e) { return []; }
+  }
+  const pending = {};
+  function wireSearch(which) {
+    const input = $(which), list = $(which + "-hits");
+    let sel = -1, hits = [];
+    const show = () => { list.innerHTML = hits.map((h, i) => '<li data-i="' + i + '"' + (i === sel ? ' aria-selected="true"' : "") + "><b>" + esc(h.label) + "</b><span>" + esc(h.sub) + "</span></li>").join(""); list.hidden = !hits.length; };
+    const run = () => {
+      const q = input.value.trim(); sel = -1;
+      if (!q || !G) { hits = []; show(); return; }
+      hits = geocodeLocal(q); show();
+      if (pending[which]) pending[which].abort();
+      const ctl = pending[which] = new AbortController();
+      geocodeRemote(q, ctl.signal).then((more) => { if (ctl.signal.aborted || input.value.trim() !== q) return; const seen = new Set(hits.map((h) => h.label.toUpperCase())); for (const h of more) if (!seen.has(h.label.toUpperCase())) hits.push(h); show(); });
+    };
+    let t; input.addEventListener("input", () => { clearTimeout(t); t = setTimeout(run, 140); });
+    input.addEventListener("focus", () => { if (hits.length && input.value.trim()) show(); });
+    input.addEventListener("keydown", (ev) => {
+      if (ev.key === "ArrowDown") { sel = Math.min(hits.length - 1, sel + 1); show(); ev.preventDefault(); }
+      else if (ev.key === "ArrowUp") { sel = Math.max(0, sel - 1); show(); ev.preventDefault(); }
+      else if (ev.key === "Enter") { ev.preventDefault(); const h = hits[Math.max(0, sel)]; if (h) pick(h); }
+      else if (ev.key === "Escape") { list.hidden = true; }
+    });
+    list.addEventListener("mousedown", (ev) => { const li = ev.target.closest("li"); if (li) { ev.preventDefault(); pick(hits[+li.dataset.i]); } });
+    input.addEventListener("blur", () => setTimeout(() => list.hidden = true, 120));
+    const pick = (h) => { setPoint(which, h.la, h.lo, h.label); map.panTo([h.la, h.lo]); if (map.getZoom() < 13) map.setZoom(14); };
+    $(which + "-x").addEventListener("click", () => { clearPoint(which); input.focus(); });
+  }
+  function hideHits(which) { $(which + "-hits").hidden = true; }
+
+  // ---------- map setup
+  function init() {
+    readColors();
+    map = L.map("map", { zoomControl: true, attributionControl: true, minZoom: 10, maxZoom: 18, zoomSnap: 0.5 }).setView([30.285, -97.74], 11);
+    map.attributionControl.setPrefix("");
+    map.attributionControl.addAttribution("Streets and bike ratings: City of Austin");
+    if (G.meta.osm && G.meta.osm.edges) map.attributionControl.addAttribution("Paths: &copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors (ODbL)");
+    for (const d of G.districts) for (const ring of d.rings) {
+      const pts = []; for (let i = 0; i < ring.length; i += 2) pts.push([(G.meta.y0 + ring[i + 1]) / SCALE, (G.meta.x0 + ring[i]) / SCALE]);
+      L.polyline(pts, { color: colors["--muted"], weight: 1, opacity: 0.4, interactive: false }).addTo(map);
+    }
+    streets = new StreetLayer({ tileSize: 256, updateWhenZooming: false, keepBuffer: 2 }).addTo(map);
+    placeLayer = L.layerGroup().addTo(map);
+    for (const p of G.places) {
+      const m = L.circleMarker([p.la, p.lo], { radius: 4, color: colors["--ink"], weight: 1.2, fillColor: colors["--surface"], fillOpacity: 1 }).addTo(placeLayer);
+      m.bindTooltip(p.n + (p.t === "swim" ? " &middot; swimming hole" : " &middot; hiking spot"), { direction: "top", offset: [0, -4] });
+      m.on("click", (ev) => { L.DomEvent.stop(ev); setPoint(!state.from ? "from" : "to", p.la, p.lo, p.n); });
+    }
+    routeLayer = L.layerGroup().addTo(map);
+    map.on("click", (ev) => { if (riders.picking) { setPicking(false); pickStreet(ev.latlng); return; } setPoint(!state.from ? "from" : "to", ev.latlng.lat, ev.latlng.lng, null, true); });
+    const showPlaces = () => { if (map.getZoom() >= 11) { if (!map.hasLayer(placeLayer)) placeLayer.addTo(map); } else if (map.hasLayer(placeLayer)) map.removeLayer(placeLayer); };
+    map.on("zoomend", showPlaces); showPlaces();
+    drawHotLayer(); map.on("zoomend", showHot);
+    probeTiles();
+    const onTheme = () => { readColors(); streets.redraw(); drawRoute(); drawHotLayer(); if (tiles) setTileTheme(); };
+    try { matchMedia("(prefers-color-scheme: dark)").addEventListener("change", onTheme); } catch (e) {}
+    new MutationObserver(onTheme).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+  }
+  function isDark() { const t = document.documentElement.getAttribute("data-theme"); return t === "dark" || (t !== "light" && matchMedia("(prefers-color-scheme: dark)").matches); }
+  function setTileTheme() { document.getElementById("map").classList.toggle("dark-tiles", isDark()); }
+  function probeTiles() {
+    if (ARTIFACT) return;   // the artifact viewer blocks outside images, so the streets are the map
+    const img = new Image();
+    img.onload = () => {
+      hasTiles = true;
+      tiles = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 19, attribution: "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors", opacity: 0.75 });
+      setTileTheme(); tiles.addTo(map); tiles.bringToBack(); streets.redraw();
+    };
+    img.src = "https://tile.openstreetmap.org/11/474/848.png";
+  }
+  // ---------- GPS: a start-from-here button, and a follow-me dot on the map
+  let watchId = null, meDot = null, meRing = null, centering = false;
+  function showMe(pos) {
+    const ll = [pos.coords.latitude, pos.coords.longitude], acc = Math.min(500, pos.coords.accuracy || 30);
+    if (!meDot) {
+      meRing = L.circle(ll, { radius: acc, color: colors["--high"], weight: 1, opacity: 0.5, fillColor: colors["--high"], fillOpacity: 0.08, interactive: false }).addTo(map);
+      meDot = L.circleMarker(ll, { radius: 7, color: colors["--surface"], weight: 2, fillColor: colors["--high"], fillOpacity: 1, interactive: false }).addTo(map);
+    } else { meDot.setLatLng(ll); meRing.setLatLng(ll); meRing.setRadius(acc); }
+  }
+  function geoFail(err) { toast(err && err.code === 1 ? "Location permission was refused. Allow it for this site to use it." : "Could not get your location."); }
+  function inCity(la, lo) { return la >= gridMin[1] && la <= gridMax[1] && lo >= gridMin[0] && lo <= gridMax[0]; }
+  function wireGeo() {
+    if (!GEO) return;
+    const btn = $("locate"); btn.hidden = false;
+    btn.addEventListener("click", () => {
+      btn.disabled = true; btn.textContent = "Finding you…";
+      navigator.geolocation.getCurrentPosition((pos) => {
+        btn.disabled = false; btn.textContent = "Start from my location";
+        const la = pos.coords.latitude, lo = pos.coords.longitude;
+        showMe(pos);
+        if (!inCity(la, lo)) { toast("You are outside the area the city's street file covers."); map.setView([la, lo], 12); return; }
+        setPoint("from", la, lo, "My location");
+        map.setView([la, lo], Math.max(map.getZoom(), 14));
+      }, (err) => { btn.disabled = false; btn.textContent = "Start from my location"; geoFail(err); }, { enableHighAccuracy: true, timeout: 12000, maximumAge: 30000 });
+    });
+    const Follow = L.Control.extend({ onAdd() {
+      const div = L.DomUtil.create("div", "leaflet-bar"), a = L.DomUtil.create("a", "follow", div);
+      a.href = "#"; a.title = "Follow my location"; a.setAttribute("role", "button"); a.setAttribute("aria-pressed", "false"); a.innerHTML = "&#9678;";
+      L.DomEvent.on(a, "click", (ev) => { L.DomEvent.stop(ev); toggleFollow(a); });
+      return div;
+    } });
+    new Follow({ position: "topleft" }).addTo(map);
+    if (RISK) { const s = $("speak"); s.hidden = false; s.addEventListener("click", () => setSpeak(!ride.speak)); }
+  }
+  // stage 2: one ride is one stretch of the follow-me dot being on; each flagged spot is said once per ride, and
+  // (2026-10-09) each turn once, about TURN_FT before it. Off the line for OFF_ROUTE_FIXES fixes in a row, the route
+  // is planned again from here (at most every REPLAN_MIN_MS, and only with a fix better than REPLAN_ACC_M)
+  const ride = { spoken: new Set(), turned: new Set(), along: null, speak: true, said: [], offCount: 0, lastReplan: 0, replans: 0 };
+  const TURN_FT = 300, TURN_NOW_FT = 60, OFF_ROUTE_FIXES = 3, REPLAN_MIN_MS = 30000, REPLAN_ACC_M = 60;
+  const canSpeak = () => typeof window.speechSynthesis !== "undefined" && typeof window.SpeechSynthesisUtterance === "function";
+  function say(text) {
+    ride.said.push(text);
+    if (!ride.speak || !canSpeak()) return;
+    try { const u = new SpeechSynthesisUtterance(text); u.lang = "en-US"; u.rate = 1; window.speechSynthesis.speak(u); } catch (e) {}
+  }
+  function setSpeak(on) {
+    ride.speak = on; const b = $("speak");
+    b.setAttribute("aria-checked", String(on)); b.textContent = "Speak turns and warnings: " + (on ? "on" : "off");
+    if (!on && canSpeak()) try { window.speechSynthesis.cancel(); } catch (e) {}
+  }
+  // one GPS fix while following: where we are along the line, the warning banner, the next-turn strip, and the voice
+  function guideAt(la, lo, acc) {
+    const R = state.route, banner = $("banner"), strip = $("nextturn");
+    const p = R && R.r && R.ix ? progress(R, la, lo, ride.along) : null;
+    if (!p) { banner.hidden = true; strip.hidden = true; return; }
+    ride.along = p.along;
+    if (p.off > OFF_ROUTE_FT) {   // off the line: no warnings; the strip says so; after OFF_ROUTE_FIXES fixes the route is planned again from here
+      banner.hidden = true;
+      strip.className = "nextturn off";
+      strip.innerHTML = esc("Off the route, " + Math.round(p.off) + " ft from the line") + "<small>" + (ride.offCount + 1 >= OFF_ROUTE_FIXES ? "Planning again from here." : "Planning again from here if it stays so.") + "</small>";
+      strip.hidden = false;
+      offRoute(la, lo, acc); return;
+    }
+    ride.offCount = 0;
+    const u = upcomingAt(R, p);
+    if (u && u.kind != null && u.ft <= WARN_FT) {
+      banner.innerHTML = esc(u.ahead.replace(/^Ahead: /, "In " + (u.ft < 50 ? "a few feet" : Math.round(u.ft / 10) * 10 + " ft") + ": ")) + "<small>" + (ride.speak && canSpeak() ? "Said aloud once. " : "") + (u.kind === "junction" ? "Counts are police reports and undercount." : "Exposed: the street's layout, not a measure of how likely a crash is.") + "</small>";
+      banner.hidden = false;
+      if (!ride.spoken.has(u.key)) { ride.spoken.add(u.key); say(u.say); }
+    } else banner.hidden = true;
+    const t = nextTurn(R, p.along);
+    if (!t) { strip.hidden = true; return; }
+    strip.className = "nextturn";
+    strip.innerHTML = esc((t.ft < TURN_NOW_FT ? "Now: " : "In " + (t.ft >= 2640 ? (t.ft / 5280).toFixed(1) + " mi" : Math.round(t.ft / 10) * 10 + " ft") + ": ") + t.text) + "<small>" + esc(t.sub) + "</small>";
+    strip.hidden = false;
+    if (t.ft <= TURN_FT && !ride.turned.has(t.key)) { ride.turned.add(t.key); say(t.ft < TURN_NOW_FT ? t.say : "In " + Math.round(t.ft / 50) * 50 + " feet, " + t.say.charAt(0).toLowerCase() + t.say.slice(1)); }
+  }
+  // off the line for OFF_ROUTE_FIXES fixes in a row: the start becomes "My location" here and the route is planned
+  // again to the same end with the same setting and avoided spots; the warnings and turns already said stay said
+  function offRoute(la, lo, acc) {
+    ride.offCount++;
+    if (ride.offCount < OFF_ROUTE_FIXES || (acc && acc > REPLAN_ACC_M) || Date.now() - ride.lastReplan < REPLAN_MIN_MS || !state.to || !inCity(la, lo)) return;
+    ride.lastReplan = Date.now(); ride.offCount = 0; ride.replans++;
+    setPoint("from", la, lo, "My location");
+    if (state.route && state.route.r) { toast("Off the route: planned again from here."); say("Planning again from here."); }
+    else toast("Off the route, and no street within a mile to plan from.");
+  }
+  // the follow-me position callback: the dot, the map, and the guidance
+  function onFix(pos) {
+    showMe(pos);
+    if (centering) map.panTo([pos.coords.latitude, pos.coords.longitude], { animate: true });
+    guideAt(pos.coords.latitude, pos.coords.longitude, pos.coords.accuracy);
+  }
+  function toggleFollow(a) {
+    if (watchId !== null) { navigator.geolocation.clearWatch(watchId); watchId = null; centering = false; a.classList.remove("on"); a.setAttribute("aria-pressed", "false"); $("banner").hidden = true; $("nextturn").hidden = true; return; }
+    a.classList.add("on"); a.setAttribute("aria-pressed", "true"); centering = true;
+    ride.spoken.clear(); ride.turned.clear(); ride.along = null; ride.offCount = 0; ride.lastReplan = 0;
+    // iOS Safari speaks only after a tap: this click is the tap, so a silent utterance unlocks the voice for the ride
+    if (ride.speak && canSpeak()) try { const u = new SpeechSynthesisUtterance(" "); u.volume = 0; window.speechSynthesis.speak(u); } catch (e) {}
+    map.once("dragstart", () => { centering = false; });   // a drag keeps the dot but stops the map chasing it
+    watchId = navigator.geolocation.watchPosition(onFix, (err) => { geoFail(err); toggleFollow(a); }, { enableHighAccuracy: true, maximumAge: 5000, timeout: 20000 });
+  }
+
+  function focusSpot(it) {
+    if (it.kind === "junction") map.setView([nLat[it.node], nLon[it.node]], Math.max(map.getZoom(), 17));
+    else { const pts = []; for (const si of it.steps) pts.push(...stepCoords(state.route.r.steps[si])); map.fitBounds(L.latLngBounds(pts).pad(0.3), { maxZoom: 17 }); }
+  }
+  function wireUi() {
+    wireSearch("from"); wireSearch("to"); wireGeo();
+    $("mode").addEventListener("click", (ev) => { const b = ev.target.closest("button"); if (b) setMode(b.dataset.v); });
+    $("swap").addEventListener("click", () => {
+      const f = state.from, t = state.to; if (!f && !t) return;
+      ["from", "to"].forEach((w) => { if (pins[w]) { map.removeLayer(pins[w]); pins[w] = null; } });
+      state.from = null; state.to = null;
+      if (t) setPoint("from", t.la, t.lo, t.label); else { $("from").value = ""; $("from-x").hidden = true; }
+      if (f) setPoint("to", f.la, f.lo, f.label); else { $("to").value = ""; $("to-x").hidden = true; }
+      if (!f || !t) route();
+    });
+    $("gpx").addEventListener("click", saveGpx);
+    if (canSendGpx()) { $("sendapp").hidden = false; $("sendapp").addEventListener("click", sendGpx); }
+    $("share").addEventListener("click", () => {
+      const url = location.href;
+      const done = () => toast("Link copied");
+      const fail = () => { toast("Copy failed; the address bar holds the link"); };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(done, fail); else fail();
+    });
+    $("cues").addEventListener("click", (ev) => {
+      const rb = ev.target.closest("button[data-r]");
+      if (rb) { const li0 = rb.closest("li"), c0 = li0 && state.route ? state.route.sum.cues[+li0.dataset.i] : null; noteKeys(rb.dataset.k.split("\n"), +rb.dataset.r, c0 ? c0.name : "this street"); return; }
+      const li = ev.target.closest("li"); if (!li || !state.route) return;
+      if (li.dataset.s != null) { const it = state.route.spots[+li.dataset.s].it; focusSpot(it); return; }
+      const c = state.route.sum.cues[+li.dataset.i], pts = []; for (const st of c.steps) pts.push(...stepCoords(st));
+      map.fitBounds(L.latLngBounds(pts).pad(0.4), { maxZoom: 16 });
+    });
+    $("watch").addEventListener("click", (ev) => {
+      const li = ev.target.closest("li[data-w]"); if (!li || !state.route || !state.route.risk) return;
+      focusSpot(state.route.risk.shown[+li.dataset.w]);
+    });
+    if (RISK) $("note-ahead").hidden = false;
+    if (SWC >= 0 && G.meta.sw) { $("note-sw").textContent = sentence({ kind: "swrule" }); $("note-sw").hidden = false; $("key-sw").hidden = false; }
+    if (RISK) { $("note-avoid").hidden = false; $("mode-hot").hidden = false; }
+    if (TRAILS.x > 1) {
+      const b = $("mode-trails"); b.hidden = false; b.title = "Comfort first, and every foot not on a trail or path costs " + TRAILS.x + " times as much";
+      $("note-trails").textContent = '"Trails first" is Comfort first with every foot that is not on a trail or path costing ' + TRAILS.x + " times as much, so the planner reaches a trail sooner, stays on it longer, and rides one even where a rated street is shorter. " +
+        "The card says how many miles are on trails and paths against the comfort route and what the setting adds. Trails and paths here: the city's High, Minor and Rough trails" + (G.meta.osm && G.meta.osm.edges ? " and the paths from OpenStreetMap" : "") + ".";
+      $("note-trails").hidden = false;
+    }
+    if (G.meta.osm && G.meta.osm.edges) {
+      const O = G.meta.osm;
+      $("note-osm").innerHTML = "Paths from OpenStreetMap (dashed green): " + esc(Math.round(O.miles).toLocaleString()) + " mi in " + esc(O.edges.toLocaleString()) + " pieces of park, campus and creek paths and connectors the city's street and comfort files do not hold, kept only where they run more than " + esc(O.dup_ft) +
+        " ft from a street or trail the city has, and joined to the network at their ends. The city has not rated them: a paved one is costed like an unpaved High trail, an unpaved or rough one (" + esc(O.miles_unpaved) + " mi) like a Rough trail, from OpenStreetMap's surface tag where there is one. " +
+        "OpenStreetMap is kept by volunteers, so a path here may be a desire line, closed, or gated. Data &copy; <a href='https://www.openstreetmap.org/copyright' target='_blank' rel='noopener'>OpenStreetMap</a> contributors, ODbL" + (O.osm_base ? ", as of " + esc(String(O.osm_base).slice(0, 10)) : "") + ".";
+      $("note-osm").hidden = false; $("key-osm").hidden = false;
+    }
+    // stage 3: the tap-card's buttons (popups are built when opened) and the card's "Stop avoiding"
+    map.on("popupopen", (ev) => {
+      const el = ev.popup.getElement(); if (!el) return;
+      for (const b of el.querySelectorAll("button[data-r]")) b.addEventListener("click", (e) => { L.DomEvent.stop(e); const nm = el.querySelector("b"); noteKeys(b.dataset.k.split("\n"), +b.dataset.r, nm ? nm.textContent : "this street"); map.closePopup(); });
+      for (const b of el.querySelectorAll("button[data-avoid], button[data-unavoid]")) b.addEventListener("click", (e) => { L.DomEvent.stop(e); if (b.dataset.avoid) setAvoid(b.dataset.avoid, true); else setAvoid(b.dataset.unavoid, false); });
+    });
+    $("notebtn").addEventListener("click", () => setPicking(!riders.picking));
+    $("avoid").addEventListener("click", (ev) => { const b = ev.target.closest("button[data-unavoid]"); if (b) setAvoid(b.dataset.unavoid, false); });
+    if (RISK) { $("note-hot").textContent = sentence({ kind: "rule" }); $("note-hot").hidden = false; $("note-hin").hidden = false; }
+    for (const t of ["plan", "notes"]) $("tab-" + t).addEventListener("click", () => { for (const u of ["plan", "notes"]) { $("tab-" + u).setAttribute("aria-selected", String(u === t)); $("pane-" + u).hidden = u !== t; } });
+    $("sources").innerHTML = "<p>" + G.meta.edges.toLocaleString() + " street and trail pieces, " + G.meta.nodes.toLocaleString() + " junctions, built " + G.meta.built.slice(0, 10) + ".</p>" + G.meta.sources.map((s) => "<div><code>" + esc(s.path) + "</code><br><code>" + s.sha256.slice(0, 16) + "&hellip;</code>" + (s.fetched ? " fetched " + s.fetched.slice(0, 10) : "") + "</div>").join("");
+    if (matchMedia("(max-width: 860px)").matches) $("legend").open = false;
+  }
+
+  fetch("graph.json").then((r) => r.json()).then((g) => {
+    decode(g); init(); wireUi(); initRiders();
+    $("loading").hidden = true;
+    if (!readHash()) {
+      try { const last = JSON.parse(localStorage.getItem("abcr.last") || "null"); if (last && last.from && last.to) { state.avoid = Array.isArray(last.avoid) ? last.avoid.filter((t) => parseTok(t)) : []; setMode(last.mode || "comfort", true); setPoint("from", last.from.la, last.from.lo, last.from.label); setPoint("to", last.to.la, last.to.lo, last.to.label); } } catch (e) {}
+    }
+    if (state.route && state.route.coords) map.fitBounds(L.latLngBounds(state.route.coords).pad(0.15));
+    window.planner = {
+      route(from, to, mode) { setMode(mode || "comfort", true); setPoint("from", from[0], from[1]); setPoint("to", to[0], to[1]); return state.route; },
+      geocode: geocodeLocal, state, nearest, plan, map: () => map, G: () => G, geo: GEO, sentence,
+      // stage 3: avoid(tokens) sets the spots to route around ("j" + junction index, "s" + edge indices, base 36) and
+      // re-plans; hotAvoid() is the citywide set; uses(r) the nodes and edges a plan goes through; AVOID_X the multiplier
+      avoid: (tokens) => { state.avoid = (tokens || []).filter((t) => parseTok(t)); route(); return state.route; },
+      hotAvoid, uses: routeUses, AVOID_X, avoidSets: (tokens, hot) => avoidSets((tokens || []).map(parseTok).filter(Boolean), hot ? hotAvoid() : null),
+      // stage 2: the next flagged spot ahead of a point on the current route and its distance in feet along the line
+      // ({ kind: null } when nothing is ahead, null with no route); spoken() is what the voice says; said() what it has said
+      upcoming: (la, lo) => upcoming(la, lo, null), spots: () => (state.route && state.route.spots) || [], said: () => ride.said.slice(),
+      // feeds one position to the follow-me callback, as the GPS would; does nothing unless following (for the test)
+      // riders' notes: riderKey(edge) is a street's note key; riders({ key: { p, a } }) sets the counts as the shared store
+      // would deliver them and re-plans; RIDER_MIN the margin that moves a route
+      riderKey, riders: (counts) => { setTally(new Map(Object.entries(counts || {}))); return state.route; }, RIDER_MIN,
+      // the GPX text for the current route (wpt, rte of turns, trk); the settings and the trails multiplier and codes
+      gpx, WEIGHT, trails: () => TRAILS, trailMiles,
+      // the Google waypoints by placement ("corners", "trails", "even"), for the batch script
+      waypointsBy: (strategy, max) => state.route && state.route.coords ? waypointsBy(state.route, max || 9, strategy) : [], WAYPOINT_STRATEGY,
+      fix: (la, lo, acc) => { if (watchId !== null) onFix({ coords: { latitude: la, longitude: lo, accuracy: acc || 10 } }); return !$("banner").hidden ? $("banner").textContent : null; },
+      // the next-turn strip's text (null when hidden), the route's turns with their distance along the line, and the ride's counters
+      nextTurn: () => $("nextturn").hidden ? null : $("nextturn").textContent, turns: () => (state.route && state.route.turns) || [],
+      progress: (la, lo) => state.route && state.route.ix ? progress(state.route, la, lo, null) : null,
+      ride: () => ({ turned: [...ride.turned], replans: ride.replans, offCount: ride.offCount, following: watchId !== null })
+    };
+    document.dispatchEvent(new Event("planner-ready"));
+  }).catch((e) => { $("loading").textContent = "Could not load the street network (" + e.message + "). If this page is open as a local file, serve the folder: python3 -m http.server"; });
+})();
+</script>
+<script>/* hosted copy only (added by scripts/build_hosted.py): offline cache, never inside the artifact viewer */(function () { if (window.claude && typeof window.claude.use === "function") return; if ("serviceWorker" in navigator && window.isSecureContext) navigator.serviceWorker.register("sw.js").catch(function () {}); if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(function () {}); })();</script>
